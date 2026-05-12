@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Start-Sleep -Seconds 2)",
+      "Bash(node screenshot.mjs http://localhost:3000)"
+    ]
+  }
+}

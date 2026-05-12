@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kika Brijačnica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --burgundy: #672f25;
+      --cream: #f4e4de;
+      --green: #708472;
+      --brown: #a16a38;
+      --text-grey: #e2e1df;
+      --light-grey: #d9d8d6;
+      --medium-grey: #afa99f;
+      --dark: #161616;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text-grey);
+      font-family: 'Sorts Mill Goudy', Georgia, serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ─── NAVIGACIJA ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      background: rgba(22, 22, 22, 0.97);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      height: 52px;
+      width: auto;
+      filter: invert(1);
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 56px;
+    }
+
+    nav a {
+      color: var(--light-grey);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 11px;
+      transition: color 0.25s;
+    }
+
+    nav a:hover { color: var(--cream); }
+
+    /* ─── HERO ─── */
+    .hero {
+      display: grid;
+      grid-template-columns: 52% 48%;
+      min-height: 100vh;
+    }
+
+    .hero-left {
+      display: flex;
+      align-items: center;
+      padding: 120px 80px 80px;
+      background-color: var(--dark);
+    }
+
+    .hero-content { max-width: 460px; }
+
+    .hero-badge {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      filter: invert(1);
+      margin-bottom: 36px;
+      display: block;
+    }
+
+    .eyebrow {
+      font-size: 20px;
+      font-style: italic;
+      color: var(--green);
+      display: block;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title {
+      font-size: clamp(50px, 6vw, 78px);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-body {
+      font-size: 14px;
+      color: var(--medium-grey);
+      line-height: 1.9;
+      margin-bottom: 36px;
+      max-width: 360px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 36px;
+      border: 1px solid rgba(244, 228, 222, 0.5);
+      color: var(--cream);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 10px;
+      font-family: 'Sorts Mill Goudy', serif;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+
+    .cta-btn:hover {
+      background-color: var(--cream);
+      border-color: var(--cream);
+      color: var(--dark);
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--dark) 0%, rgba(22,22,22,0) 50%);
+    }
+
+    /* ─── SECTION LABEL ─── */
+    .label {
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--green);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    /* ─── PRIČA ─── */
+    .story {
+      background-color: var(--cream);
+      padding: 110px 0;
+    }
+
+    .story-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .story-text .label { color: var(--green); }
+
+    .story-text h2 {
+      font-size: clamp(26px, 3.2vw, 42px);
+      color: #1c1c1c;
+      line-height: 1.2;
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+
+    .story-text p {
+      font-size: 14px;
+      color: #484040;
+      line-height: 1.95;
+      margin-bottom: 18px;
+    }
+
+    .story-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 240px 190px;
+      gap: 10px;
+    }
+
+    .story-photos .photo-wide {
+      grid-column: 1 / -1;
+    }
+
+    .story-photos img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── USLUGE ─── */
+    .services {
+      background-color: var(--dark);
+      padding: 110px 0;
+    }
+
+    .services-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .services-header h2 {
+      font-size: clamp(32px, 5vw, 62px);
+      color: var(--cream);
+      font-style: italic;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .services-header p {
+      color: var(--medium-grey);
+      font-size: 14px;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.85;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .service-card {
+      padding: 60px 56px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-num {
+      font-size: 110px;
+      color: rgba(255,255,255,0.04);
+      font-style: italic;
+      line-height: 1;
+      position: absolute;
+      top: 12px;
+      right: 28px;
+      pointer-events: none;
+    }
+
+    .service-card h3 {
+      font-size: 17px;
+      color: var(--cream);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .service-card p {
+      color: var(--medium-grey);
+      font-size: 14px;
+      line-height: 1.85;
+      position: relative;
+    }
+
+    /* ─── TIM ─── */
+    .team {
+      background-color: #111;
+      padding: 110px 0;
+    }
+
+    .team-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 64px;
+      text-align: center;
+    }
+
+    .team-container h2 {
+      font-size: clamp(30px, 5vw, 56px);
+      color: var(--cream);
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+
+    .team-intro {
+      color: var(--medium-grey);
+      font-size: 14px;
+      max-width: 500px;
+      margin: 0 auto 72px;
+      line-height: 1.85;
+    }
+
+    .team-grid {
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+
+    .team-member { text-align: center; flex: 0 0 160px; }
+
+    .team-photo-wrap {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .team-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-member-name {
+      font-size: 17px;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .team-member-role {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    /* ─── LOKACIJA ─── */
+    .location {
+      background-color: var(--dark);
+      padding: 110px 0;
+    }
+
+    .location-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 64px;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .location-text h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      color: var(--cream);
+      font-style: italic;
+      line-height: 1.15;
+      margin-bottom: 40px;
+    }
+
+    .location-info { margin-top: 28px; }
+    .location-info:first-of-type { margin-top: 0; }
+
+    .location-info h4 {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .location-info p {
+      color: var(--medium-grey);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .location-map img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      filter: sepia(15%) brightness(0.6);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background-color: #0d0d0d;
+      padding: 40px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-brand {
+      font-size: 13px;
+      color: var(--cream);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .footer-nav { display: flex; gap: 36px; }
+
+    .footer-nav a {
+      color: var(--medium-grey);
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-nav a:hover { color: var(--cream); }
+
+    .footer-copy {
+      font-size: 11px;
+      color: #555;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGACIJA -->
+<nav>
+  <a href="#">
+    <img class="nav-logo" src="brand_assets/Recreate_the_composition_from__Nano_Banana_2_04043.png" alt="Kika Brijačnica">
+  </a>
+  <div class="nav-links">
+    <a href="#prica">Priča</a>
+    <a href="#usluge">Usluge</a>
+    <a href="#tim">Tim</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-content">
+
+      <!-- Logo -->
+      <img class="hero-badge"
+           src="brand_assets/Recreate_the_composition_from__Nano_Banana_2_04043.png"
+           alt="Kika Brijačnica logo">
+
+      <span class="eyebrow">Vaša susjedska</span>
+      <h1 class="hero-title">Brijačnica</h1>
+      <p class="hero-body">
+        Tradicionalna brijačnica smještena u srcu grada. Specijaliziramo se za precizno šišanje, klasično brijanje i uređivanje brade — uz posvećen odnos prema svakom gostu.
+      </p>
+      <a href="#kontakt" class="cta-btn">Zakaži termin</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://placehold.co/900x1080/1c1308/8a7255?text=." alt="Brijačnica">
+  </div>
+</section>
+
+<!-- PRIČA -->
+<section class="story" id="prica">
+  <div class="story-container">
+    <div class="story-text">
+      <span class="label">Priča</span>
+      <h2>Da skratimo priču...</h2>
+      <p>
+        Sve je počelo s jednom stolicom, jednim parom škara i strašću prema dobro obavljenom poslu. Naša brijačnica nije samo mjesto za šišanje — to je zajednica.
+      </p>
+      <p>
+        Naš osnivač zanat je naučio od svog djeda, koji je vjerovao da istinski dobar brijač ne oblikuje samo kosu — oblikuje samopouzdanje. Svaki rez, svako brijanje, svaki topli ručnik ima svoju svrhu.
+      </p>
+      <p>
+        Dobrodošli kod nas. Ovdje se svaki gost tretira kao stalni gost.
+      </p>
+    </div>
+    <div class="story-photos">
+      <img class="photo-wide"
+           src="https://placehold.co/800x240/2a1f14/9a8060?text=." alt="">
+      <img src="https://placehold.co/400x190/231810/9a8060?text=." alt="">
+      <img src="https://placehold.co/400x190/1e160e/9a8060?text=." alt="">
+    </div>
+  </div>
+</section>
+
+<!-- USLUGE -->
+<section class="services" id="usluge">
+  <div class="services-container">
+    <div class="services-header">
+      <span class="label">Usluge</span>
+      <h2>Šišamo kosu,<br>ne kutove.</h2>
+      <p>Svaka usluga pružena je s pažnjom i preciznošću. Koristimo isključivo premium proizvode i provjerene tehnike.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-num">#1</span>
+        <h3>Šišanje</h3>
+        <p>Precizno šišanje prilagođeno vašem obliku lica i željenom stilu. Savjetovanje uključeno u svaki posjet.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">#2</span>
+        <h3>Uređivanje brade</h3>
+        <p>Oblikovanje i uređivanje brade koje naglašava vaše crte lica i daje savršen završni izgled.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">#3</span>
+        <h3>Šišanje i brada</h3>
+        <p>Kompletni tretman — šišanje i uređivanje brade u jednoj sesiji za potpunu transformaciju.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">#4</span>
+        <h3>Brijanje vrućim ručnikom</h3>
+        <p>Klasično brijanje ravnom britvom uz topli ručnik — pravo iskustvo za modernog muškarca.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIM -->
+<section class="team" id="tim">
+  <div class="team-container">
+    <span class="label" style="display:block;text-align:center;">Tim</span>
+    <h2>Upoznajte obitelj</h2>
+    <p class="team-intro">
+      Naši brijači su više od stručnjaka — entuzijasti koji svaki dan dolaze s posvećenošću i osmijehom na licu.
+    </p>
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="team-photo-wrap">
+          <img src="https://placehold.co/160x160/231810/e2e1df?text=M" alt="Marko">
+        </div>
+        <div class="team-member-name">Marko</div>
+        <div class="team-member-role">Vlasnik &amp; Senior Brijač</div>
+      </div>
+      <div class="team-member">
+        <div class="team-photo-wrap">
+          <img src="https://placehold.co/160x160/231810/e2e1df?text=L" alt="Luka">
+        </div>
+        <div class="team-member-name">Luka</div>
+        <div class="team-member-role">Majstor Šišanja</div>
+      </div>
+      <div class="team-member">
+        <div class="team-photo-wrap">
+          <img src="https://placehold.co/160x160/231810/e2e1df?text=I" alt="Ivan">
+        </div>
+        <div class="team-member-name">Ivan</div>
+        <div class="team-member-role">Specijalist za Bradu</div>
+      </div>
+      <div class="team-member">
+        <div class="team-photo-wrap">
+          <img src="https://placehold.co/160x160/231810/e2e1df?text=T" alt="Tomislav">
+        </div>
+        <div class="team-member-name">Tomislav</div>
+        <div class="team-member-role">Brijač</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOKACIJA -->
+<section class="location" id="kontakt">
+  <div class="location-container">
+    <div class="location-text">
+      <span class="label">Pronađite nas</span>
+      <h2>Centar<br>Grada</h2>
+      <div class="location-info">
+        <h4>Adresa</h4>
+        <p>Ilica 42<br>10000 Zagreb, Hrvatska</p>
+      </div>
+      <div class="location-info">
+        <h4>Telefon</h4>
+        <p>+385 1 234 5678</p>
+      </div>
+      <div class="location-info">
+        <h4>Radno vrijeme</h4>
+        <p>
+          Ponedjeljak – Petak &nbsp;10:00 – 20:00<br>
+          Subota &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9:00 – 18:00<br>
+          Nedjelja &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zatvoreno
+        </p>
+      </div>
+    </div>
+    <div class="location-map">
+      <img src="https://placehold.co/720x420/141414/708472?text=Karta" alt="Karta grada">
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <img src="brand_assets/Recreate_the_composition_from__Nano_Banana_2_04043.png"
+         alt="Kika Brijačnica"
+         style="height: 56px; width: auto; filter: invert(1); display: block;">
+  </div>
+  <nav class="footer-nav">
+    <a href="#prica">Priča</a>
+    <a href="#usluge">Usluge</a>
+    <a href="#tim">Tim</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <div class="footer-copy">© 2024 Kika Brijačnica — Sva prava pridržana</div>
+</footer>
+
+</body>
+</html>
