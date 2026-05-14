@@ -6,7 +6,7 @@
   <title>Kika Brijačnica</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     :root {
       --burgundy: #672f25;
@@ -28,6 +28,7 @@
       font-family: 'Sorts Mill Goudy', Georgia, serif;
       font-size: 15px;
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
     /* ─── NAVIGACIJA ─── */
@@ -662,6 +663,7 @@
       margin-bottom: 24px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
+      line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -704,59 +706,144 @@
       max-width: 1160px;
       margin: 0 auto;
       padding: 0 64px;
-      text-align: center;
     }
 
-    .team-container h2 {
-      font-size: clamp(30px, 5vw, 56px);
-      color: var(--cream);
-      font-style: italic;
-      margin-bottom: 18px;
+    .team-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px;
+      align-items: center;
     }
 
-    .team-intro {
-      color: var(--medium-grey);
-      font-size: 14px;
-      max-width: 500px;
-      margin: 0 auto 72px;
-      line-height: 1.85;
+    .team-photo-side {
+      position: relative;
     }
 
-    .team-grid {
-      display: flex;
-      justify-content: center;
-      gap: 56px;
-      flex-wrap: wrap;
+    .team-photo-glow {
+      position: absolute;
+      inset: -20px;
+      border-radius: 6px;
+      background: radial-gradient(ellipse at 50% 60%, rgba(201,169,110,0.15) 0%, transparent 68%);
+      z-index: 0;
+      pointer-events: none;
     }
 
-    .team-member { text-align: center; flex: 0 0 160px; }
-
-    .team-photo-wrap {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
+    .team-photo-frame {
+      position: relative;
+      z-index: 1;
+      border-radius: 3px;
       overflow: hidden;
-      margin: 0 auto 20px;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(201,169,110,0.22);
+      box-shadow: 0 0 48px rgba(201,169,110,0.1), 0 12px 56px rgba(0,0,0,0.75);
     }
 
-    .team-photo-wrap img {
+    .team-photo-frame img {
       width: 100%;
-      height: 100%;
+      display: block;
+      aspect-ratio: 3/4;
       object-fit: cover;
     }
 
-    .team-member-name {
-      font-size: 17px;
-      color: var(--cream);
-      margin-bottom: 6px;
+    .team-content-side {
+      display: flex;
+      flex-direction: column;
     }
 
-    .team-member-role {
+    .team-eyebrow {
+      font-family: 'Montserrat', sans-serif;
       font-size: 10px;
-      letter-spacing: 0.2em;
+      font-weight: 600;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--green);
+      color: #c9a96e;
+      margin-bottom: 22px;
+    }
+
+    .team-content-side h2 {
+      font-family: 'Sorts Mill Goudy', Georgia, serif;
+      font-size: clamp(26px, 3.5vw, 44px);
+      color: var(--cream);
+      font-style: italic;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .team-barber-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(52px, 6vw, 82px);
+      color: var(--cream);
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .team-barber-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 32px;
+    }
+
+    .team-divider {
+      width: 44px;
+      height: 1px;
+      background: rgba(201,169,110,0.35);
+      margin-bottom: 28px;
+    }
+
+    .team-bio {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      color: var(--medium-grey);
+      line-height: 1.9;
+      margin-bottom: 36px;
+    }
+
+    .team-insta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cream);
+      opacity: 0.65;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      width: fit-content;
+    }
+
+    .team-insta:hover {
+      opacity: 1;
+      color: #c9a96e;
+    }
+
+    .team-insta svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 860px) {
+      .team-split {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .team-container {
+        padding: 0 24px;
+      }
+      .team {
+        padding: 80px 0;
+      }
+      .team-photo-frame img {
+        aspect-ratio: 4/5;
+      }
     }
 
     /* ─── RECENZIJE ─── */
@@ -1109,105 +1196,253 @@
     /* ─── FOOTER ─── */
     footer {
       background-color: #0d0d0d;
-      padding: 40px 64px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .footer-brand {
-      font-size: 13px;
-      color: var(--cream);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .footer-nav { display: flex; gap: 36px; }
-
-    .footer-nav a {
-      color: var(--medium-grey);
-      text-decoration: none;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .footer-nav a:hover { color: var(--cream); }
-
-    .footer-copy {
-      font-size: 11px;
-      color: #555;
-      font-style: italic;
-    }
-
-    /* ─── GLOBAL PARALLAX BACKGROUND LAYERS ─── */
-    .para-layer {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-    }
-    #para-glow-1 {
-      /* warm gold bloom — lower-left */
-      background: radial-gradient(ellipse 130% 80% at 5% 95%, rgba(167,130,66,0.09) 0%, transparent 52%);
-      will-change: transform;
-    }
-    #para-glow-2 {
-      /* cool green shadow — upper-right */
-      background: radial-gradient(ellipse 90% 130% at 95% 5%, rgba(112,132,114,0.06) 0%, transparent 52%);
-      will-change: transform;
-    }
-
-    /* ─── SCROLL SCENE (hero → priča transition) ─── */
-    #scroll-scene {
       position: relative;
-      height: 200vh;
-      /* Dark gradient at the very bottom so the scene never cuts to white */
-      background: linear-gradient(to bottom, var(--dark) 92%, #000 100%);
-    }
-
-    /* Override hero to be sticky inside the scene */
-    #scroll-scene > .hero {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      min-height: 100vh; /* insurance against subpixel gaps */
-      overflow: hidden;  /* explicit: clips the video so nothing leaks below */
-      z-index: 1;
-      transform-origin: center center;
-      will-change: transform;
-      margin: 0;
+      overflow: hidden;
       padding: 0;
     }
 
-    /* Story enters as a card sliding up over the hero */
-    #scroll-scene > .story {
+    .footer-thread {
+      height: 1px;
+      background: linear-gradient(to right, transparent 0%, #c9a96e 50%, transparent 100%);
+    }
+
+    /* Full-width band — content overlay anchors to this, letters anchor to footer-inner inside it.
+       margin-bottom: -33px absorbs the font's descender metric gap so the space below the visible
+       letter shapes matches the space above them (top gap ≈ 42px, was 42px vs 75px before). */
+    .footer-body {
       position: relative;
-      z-index: 10; /* well above hero (z-index: 1) — fully covers it on land */
-      /*
-       * center center (not center top) is the key fix:
-       * scale(0.8) from the center pushes the visual top ~10vh BELOW the
-       * viewport at scroll=0, so the cream background never peeks at the
-       * viewport edge before the animation starts.
-       */
-      transform-origin: center center;
-      will-change: transform;
+      height: 250px;
       overflow: hidden;
-      min-height: 100vh; /* guarantees the story covers 100vh when fully revealed */
-      /* CSS initial state = JS values at progress 0 → prevents flash of
-         unstyled content before the scroll listener fires */
-      transform: scale(0.8) rotate(5deg);
-      border-radius: 20px 20px 0 0;
+      margin-bottom: -33px;
+    }
+
+    /* Letter container: centered, fixed-width — KIKA stays bounded to 1200px */
+    .footer-inner {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    /* Background layer: 4 equal letter columns, each 300px (= 1200 / 4).
+       Letters are centered within their column (text-align: center).
+       font-size chosen so cap letters have ~20px clearance inside the 250px height. */
+    .footer-kika {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .footer-kika span {
+      flex: 1;
+      font-family: 'Sorts Mill Goudy', Georgia, serif;
+      font-size: 220px;
+      font-style: italic;
+      font-weight: 900;
+      color: #f4e4de;
+      opacity: 0.04;
+      line-height: 1;
+      text-align: center;
+    }
+
+    /* Content overlay anchors to .footer-body (full viewport width), NOT .footer-inner.
+       KIKA letters stay inside the 1200px centered box; logo+button act as outer bookends.
+       1fr auto 1fr: equal side cells force nav to exact screen center at all widths. */
+    .footer-content {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 40px;
+      gap: 0;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-self: start;
+    }
+
+    .footer-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      justify-self: end;
+    }
+
+    .footer-logo {
+      height: 77px;
+      width: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .footer-col-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #484440;
+      margin-bottom: 14px;
+    }
+
+    .footer-social {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-social a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #c9a96e;
+      text-decoration: none;
+      opacity: 0.65;
+      transition: opacity 0.25s cubic-bezier(0.16,1,0.3,1);
+      width: fit-content;
+    }
+
+    .footer-social a:hover { opacity: 1; }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-nav a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--medium-grey);
+      text-decoration: none;
+      transition: color 0.25s cubic-bezier(0.16,1,0.3,1);
+      width: fit-content;
+    }
+
+    .footer-nav a:hover { color: #c9a96e; }
+
+    .footer-cta-btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #c9a96e;
+      background: transparent;
+      border: 1px solid rgba(201,169,110,0.5);
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 1px;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.4s cubic-bezier(0.16,1,0.3,1),
+                  border-color 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .footer-cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #a16a38, #c9a96e 60%, #e8c88a);
+      transform: translateX(-101%);
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+      z-index: 0;
+    }
+
+    .footer-cta-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-cta-btn:hover {
+      color: #111;
+      border-color: #c9a96e;
+    }
+
+    .footer-cta-btn:hover::before {
+      transform: translateX(0);
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 16px 80px 28px;
+      text-align: center;
+    }
+
+    .footer-copy {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      color: #444;
+      letter-spacing: 0.14em;
+      font-style: italic;
+    }
+
+    @media (max-width: 1024px) {
+      .footer-kika { display: none; }
+      .footer-body { height: auto; margin-bottom: 0; }
+      .footer-inner { height: auto; overflow: visible; }
+      .footer-content {
+        position: static;
+        grid-template-columns: 1fr;
+        padding: 56px 40px 48px;
+        gap: 36px;
+      }
+      .footer-left,
+      .footer-center,
+      .footer-right { align-items: flex-start; }
+      .footer-nav { align-items: flex-start; }
+      .footer-bottom { padding: 16px 40px 28px; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-content { padding: 48px 24px 40px; }
+      .footer-bottom { padding: 16px 24px 24px; }
+    }
+
+    /* ─── HERO LOAD ANIMATIONS ─── */
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow    { animation: heroIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+    .hero-title { animation: heroIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.30s both; }
+    .hero-body  { animation: heroIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.50s both; }
+    .cta-btn    { animation: heroIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both; }
+
+    /* ─── CONTAINERSCROLL PERSPECTIVE WRAPPER ─── */
+    .scroll-container-wrap {
+      perspective: 1200px;
+      perspective-origin: center 30%;
     }
   </style>
 </head>
 <body>
-
-<!-- GLOBAL PARALLAX BG LAYERS (behind everything, move at different speeds) -->
-<div id="para-glow-1" class="para-layer"></div>
-<div id="para-glow-2" class="para-layer"></div>
 
 <!-- NAVIGACIJA -->
 <nav id="main-nav">
@@ -1239,9 +1474,6 @@
   <a href="#kontakt" class="nav-link">Kontakt</a>
   <a href="#kontakt" class="nav-cta">Zakaži termin</a>
 </div>
-
-<!-- SCROLL SCENE: hero + priča animate as one unit -->
-<div id="scroll-scene">
 
 <!-- HERO -->
 <section class="hero">
@@ -1289,7 +1521,6 @@
   </div>
 </section>
 
-</div><!-- /scroll-scene -->
 
 <!-- USLUGE -->
 <section class="services" id="usluge">
@@ -1379,40 +1610,38 @@
 <!-- TIM -->
 <section class="team" id="tim">
   <div class="team-container">
-    <span class="label" style="display:block;text-align:center;">Tim</span>
-    <h2>Upoznajte obitelj</h2>
-    <p class="team-intro">
-      Naši brijači su više od stručnjaka — entuzijasti koji svaki dan dolaze s posvećenošću i osmijehom na licu.
-    </p>
-    <div class="team-grid">
-      <div class="team-member">
-        <div class="team-photo-wrap">
-          <img src="https://placehold.co/160x160/231810/e2e1df?text=M" alt="Marko">
+    <div class="team-split">
+
+      <!-- Lijeva strana: portret -->
+      <div class="team-photo-side">
+        <div class="team-photo-glow"></div>
+        <div class="team-photo-frame">
+          <img src="https://placehold.co/480x640/141414/c9a96e" alt="Vlasnik & Master Brijač">
         </div>
-        <div class="team-member-name">Marko</div>
-        <div class="team-member-role">Vlasnik &amp; Senior Brijač</div>
       </div>
-      <div class="team-member">
-        <div class="team-photo-wrap">
-          <img src="https://placehold.co/160x160/231810/e2e1df?text=L" alt="Luka">
-        </div>
-        <div class="team-member-name">Luka</div>
-        <div class="team-member-role">Majstor Šišanja</div>
+
+      <!-- Desna strana: sadržaj -->
+      <div class="team-content-side">
+        <span class="team-eyebrow">Vještina i Strast</span>
+        <h2>Majstor iza stolice</h2>
+        <div class="team-barber-name">Marko</div>
+        <div class="team-barber-title">Vlasnik &amp; Master Brijač</div>
+        <div class="team-divider"></div>
+        <p class="team-bio">
+          Svaki rez je priča za sebe — preciznost i strast nisu mi posao, već životni poziv.
+          Uz više od deset godina iskustva, vjerujem da pravi brijač ne samo šiša,
+          već gradi povjerenje s kojim se svaki klijent rado vraća.
+        </p>
+        <a href="https://instagram.com/kikabrijacnica" target="_blank" rel="noopener" class="team-insta">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+          @kikabrijacnica
+        </a>
       </div>
-      <div class="team-member">
-        <div class="team-photo-wrap">
-          <img src="https://placehold.co/160x160/231810/e2e1df?text=I" alt="Ivan">
-        </div>
-        <div class="team-member-name">Ivan</div>
-        <div class="team-member-role">Specijalist za Bradu</div>
-      </div>
-      <div class="team-member">
-        <div class="team-photo-wrap">
-          <img src="https://placehold.co/160x160/231810/e2e1df?text=T" alt="Tomislav">
-        </div>
-        <div class="team-member-name">Tomislav</div>
-        <div class="team-member-role">Brijač</div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -1523,26 +1752,65 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">
-    <img src="Gemini_Generated_Image_wj0z25wj0z25wj0z-removebg-preview.png"
-         alt="Kika Brijačnica"
-         style="height: 64px; width: auto; display: block;">
+
+  <!-- Gold gradient thread at the very top edge -->
+  <div class="footer-thread"></div>
+
+  <!-- footer-body is full-width; footer-inner constrains only the KIKA letters to 1200px -->
+  <div class="footer-body">
+
+    <!-- KIKA letters: centered 1200px container — letters never leave this box -->
+    <div class="footer-inner">
+      <div class="footer-kika" aria-hidden="true">
+        <span>K</span>
+        <span>I</span>
+        <span>K</span>
+        <span>A</span>
+      </div>
+    </div>
+
+    <!-- Content overlay: absolute over full footer-body width — logo/button are outer bookends -->
+    <div class="footer-content">
+
+      <div class="footer-left">
+        <img src="Gemini_Generated_Image_wj0z25wj0z25wj0z-removebg-preview.png"
+             alt="Kika Brijačnica" class="footer-logo">
+        <div class="footer-col-label">Pratite nas</div>
+        <div class="footer-social">
+          <a href="https://instagram.com/kikabrijacnica" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://facebook.com/kikabrijacnica" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+
+      <div class="footer-center">
+        <div class="footer-col-label">Navigacija</div>
+        <nav class="footer-nav">
+          <a href="#prica">Priča</a>
+          <a href="#usluge">Usluge</a>
+          <a href="#tim">Tim</a>
+          <a href="#recenzije">Recenzije</a>
+        </nav>
+      </div>
+
+      <div class="footer-right">
+        <a href="#kontakt" class="footer-cta-btn">
+          <span>Rezerviraj odmah</span>
+        </a>
+      </div>
+
+    </div>
+
   </div>
-  <nav class="footer-nav">
-    <a href="#prica">Priča</a>
-    <a href="#usluge">Usluge</a>
-    <a href="#tim">Tim</a>
-    <a href="#recenzije">Recenzije</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
-  <div class="footer-copy">© 2024 Kika Brijačnica — Sva prava pridržana</div>
+
+  <!-- Copyright bar below the brand band -->
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Kika Brijačnica — Sva prava pridržana</div>
+  </div>
+
 </footer>
 
-<!-- GSAP + ScrollTrigger + Lenis via CDN (no npm/Node needed) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
 <script>
   (function () {
     var nav = document.getElementById('main-nav');
@@ -1575,124 +1843,115 @@
     });
   })();
 
-  // ── Scroll-scene: hero → priča transition ──────────────────────────────
+  // ── Smooth anchor scroll ──────────────────────────────────────────────
   (function () {
-    var scene = document.getElementById('scroll-scene');
-    var hero  = scene.querySelector('.hero');
-    var story = scene.querySelector('.story');
-
-    function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
-    function lerp(a, b, t)    { return a + (b - a) * t; }
-
-    function getProgress() {
-      var rect      = scene.getBoundingClientRect();
-      var scrollable = scene.offsetHeight - window.innerHeight;
-      return clamp(-rect.top / scrollable, 0, 1);
-    }
-
-    function update() {
-      var p = getProgress();
-
-      // Section 1 (hero): scale 1 → 0.8, rotate 0 → -5deg
-      var hScale  = lerp(1,   0.8, p);
-      var hRotate = lerp(0,  -5,   p);
-      hero.style.transform = 'scale(' + hScale + ') rotate(' + hRotate + 'deg)';
-
-      // Section 2 (story): scale 0.8 → 1, rotate 5 → 0deg
-      // premium card reveal: top corners round at start, flatten as it lands
-      var sScale  = lerp(0.8,  1, p);
-      var sRotate = lerp(5,    0, p);
-      var sRadius = lerp(20,   0, p);
-      story.style.transform    = 'scale(' + sScale + ') rotate(' + sRotate + 'deg)';
-      story.style.borderRadius = sRadius + 'px ' + sRadius + 'px 0 0';
-    }
-
-    window.addEventListener('scroll', update, { passive: true });
-    update();
-  })();
-
-  // ── GSAP + Lenis: global parallax & section reveals ───────────────────
-  (function () {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // ── Lenis smooth scroll (replaces CSS scroll-behavior: smooth) ──────
-    var lenis = new Lenis({
-      duration: 1.4,
-      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-      smoothWheel: true,
-    });
-
-    // Wire Lenis into GSAP ticker so ScrollTrigger stays in sync
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-    gsap.ticker.lagSmoothing(0);
-
-    // Anchor clicks → smooth scroll via Lenis (replaces CSS smooth-scroll)
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
       a.addEventListener('click', function (e) {
         var target = document.querySelector(this.getAttribute('href'));
-        if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -80 }); }
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
     });
+  })();
 
-    // ── Two ambient glow layers at different parallax speeds ────────────
-    // Layer 1 (gold, lower-left): moves down at 40% extra — drifts away slowly
-    gsap.to('#para-glow-1', {
-      yPercent: 40,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 1,
-      },
-    });
-    // Layer 2 (green, upper-right): moves up at 25% — drifts opposite direction
-    gsap.to('#para-glow-2', {
-      yPercent: -25,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 1,
-      },
+  // ── FlowArt-inspired GSAP Scroll Animation System ────────────────────
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    var EASE     = 'power3.out';
+    var isMobile = window.innerWidth <= 768;
+
+    // ── Section fade + slide ─────────────────────────────────────────────
+    document.querySelectorAll('.story, .services, .team, .reviews, .location').forEach(function (sec) {
+      gsap.fromTo(sec,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.9, ease: EASE,
+          scrollTrigger: { trigger: sec, start: 'top 88%', once: true } }
+      );
     });
 
-    // ── Section content reveals ─────────────────────────────────────────
-    // Gold label tags
-    gsap.utils.toArray('.label').forEach(function (el) {
-      gsap.from(el, {
-        y: 14, opacity: 0, duration: 0.7, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 88%' },
-      });
+    // ── Gold headings: blur-in + scale (luxury emphasis) ─────────────────
+    document.querySelectorAll(
+      '.story-text h2, .services-header h2, .team-content-side h2, .reviews-header h2, .location-text h2'
+    ).forEach(function (el) {
+      var from = { opacity: 0, y: 36, scale: 0.96 };
+      var to   = { opacity: 1, y: 0,  scale: 1,    duration: 0.95, ease: EASE, delay: 0.08,
+                   scrollTrigger: { trigger: el, start: 'top 86%', once: true } };
+      if (!isMobile) { from.filter = 'blur(8px)'; to.filter = 'blur(0px)'; }
+      gsap.fromTo(el, from, to);
     });
 
-    // Section headings
-    gsap.utils.toArray('.story h2, .services-header h2, .team h2, .location h2').forEach(function (el) {
-      gsap.from(el, {
-        y: 32, opacity: 0, duration: 1.0, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 85%' },
-      });
+    // ── Section labels ────────────────────────────────────────────────────
+    document.querySelectorAll('.label').forEach(function (el) {
+      gsap.fromTo(el,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.7, ease: EASE,
+          scrollTrigger: { trigger: el, start: 'top 88%', once: true } }
+      );
     });
 
-    // Service cards — staggered entrance
-    gsap.from('.service-slide', {
-      y: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out',
-      scrollTrigger: { trigger: '.services-grid', start: 'top 82%' },
+    // ── Body copy ─────────────────────────────────────────────────────────
+    document.querySelectorAll('.services-header p, .team-bio, .story-text p').forEach(function (el) {
+      gsap.fromTo(el,
+        { opacity: 0, y: 22 },
+        { opacity: 1, y: 0, duration: 0.8, ease: EASE, delay: 0.12,
+          scrollTrigger: { trigger: el, start: 'top 87%', once: true } }
+      );
     });
 
-    // Team member cards — staggered entrance
-    gsap.from('.team-member', {
-      y: 40, opacity: 0, duration: 0.8, stagger: 0.12, ease: 'power2.out',
-      scrollTrigger: { trigger: '.team-grid', start: 'top 82%' },
-    });
+    // ── Service cards: staggered 0.15s, left → right ─────────────────────
+    gsap.fromTo('.service-slide',
+      { opacity: 0, y: 52 },
+      { opacity: 1, y: 0, duration: 0.8, ease: EASE, stagger: 0.15,
+        scrollTrigger: { trigger: '.services-grid', start: 'top 82%', once: true } }
+    );
 
-    // Location info rows — slide in from left
-    gsap.from('.location-info', {
-      x: -24, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out',
-      scrollTrigger: { trigger: '.location-text', start: 'top 80%' },
-    });
+    // ── Review cards: staggered 0.15s ────────────────────────────────────
+    gsap.fromTo('.review-card',
+      { opacity: 0, y: 48 },
+      { opacity: 1, y: 0, duration: 0.8, ease: EASE, stagger: 0.15,
+        scrollTrigger: { trigger: '.reviews-grid', start: 'top 82%', once: true } }
+    );
+
+    // ── Team split: photo fade-scale + content stagger ───────────────────
+    gsap.fromTo('.team-photo-frame',
+      { opacity: 0, scale: 0.96 },
+      { opacity: 1, scale: 1, duration: 0.95, ease: EASE,
+        scrollTrigger: { trigger: '.team-split', start: 'top 80%', once: true } }
+    );
+    gsap.fromTo('.team-eyebrow, .team-content-side h2, .team-barber-name, .team-barber-title, .team-divider, .team-bio, .team-insta',
+      { opacity: 0, y: 28 },
+      { opacity: 1, y: 0, duration: 0.75, ease: EASE, stagger: 0.1,
+        scrollTrigger: { trigger: '.team-split', start: 'top 78%', once: true } }
+    );
+
+    // ── Location info: staggered slide from left ──────────────────────────
+    gsap.fromTo('.location-info',
+      { opacity: 0, x: -32 },
+      { opacity: 1, x: 0, duration: 0.75, ease: EASE, stagger: 0.12,
+        scrollTrigger: { trigger: '.location-text', start: 'top 80%', once: true } }
+    );
+
+    // ── ContainerScroll: scrub-driven 3D perspective on services grid ─────
+    var grid = document.querySelector('.services-grid');
+    if (grid) {
+      var wrap = document.createElement('div');
+      wrap.className = 'scroll-container-wrap';
+      grid.parentNode.insertBefore(wrap, grid);
+      wrap.appendChild(grid);
+      grid.style.transformOrigin = 'center top';
+
+      gsap.fromTo(grid,
+        { rotationX: 16, scale: 1.04 },
+        { rotationX: 0,  scale: 1,    ease: 'none',
+          scrollTrigger: { trigger: wrap, start: 'top bottom', end: 'top 15%', scrub: 1.8 } }
+      );
+    }
+
   })();
 
   // ── Review + service card glow: per-card element-relative cursor tracking ──
