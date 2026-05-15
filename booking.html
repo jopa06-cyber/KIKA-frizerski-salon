@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rezervirajte termin — Kika Frizerski salon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: var(--text-grey);
+      font-family: 'Sorts Mill Goudy', Georgia, serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px;
+      /* Subtle radial grain on background */
+      background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(201,169,110,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(201,169,110,0.03) 0%, transparent 55%);
+    }
+
+    /* ── Header ── */
+    .booking-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .booking-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #c9a96e;
+      display: block;
+      margin-bottom: 22px;
+    }
+
+    .booking-title {
+      font-family: 'Sorts Mill Goudy', Georgia, serif;
+      font-size: clamp(30px, 5vw, 52px);
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+
+    .booking-subtext {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--medium-grey);
+      line-height: 1.75;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .booking-divider {
+      width: 44px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #c9a96e, transparent);
+      margin: 26px auto 0;
+    }
+
+    /* ── Cards grid ── */
+    .booking-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 860px;
+      margin-bottom: 56px;
+    }
+
+    /* ── Card ── */
+    .booking-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 52px 28px 44px;
+      background: #141414;
+      border-radius: 14px;
+      border: 1px solid rgba(201, 169, 110, 0.18);
+      text-decoration: none;
+      color: var(--cream);
+      touch-action: none;
+      /* Spotlight vars */
+      --base: 38;
+      --spread: 20;
+      --radius: 14;
+      --border: 2;
+      --size: 300;
+      --border-size: calc(var(--border) * 1px);
+      --spotlight-size: calc(var(--size) * 1px);
+      --hue: calc(var(--base) + (var(--xp, 0) * var(--spread)));
+      --border-spot-opacity: 1;
+      --border-light-opacity: 0.5;
+      transition: border-color 0.25s ease,
+                  box-shadow 0.25s ease,
+                  transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .booking-card:hover {
+      border-color: rgba(201, 169, 110, 0.55);
+      box-shadow: 0 0 28px rgba(201, 169, 110, 0.35), 0 0 64px rgba(201, 169, 110, 0.15);
+      transform: translateY(-5px);
+    }
+
+    /* Spotlight border */
+    .booking-card::before,
+    .booking-card::after {
+      pointer-events: none;
+      content: "";
+      position: absolute;
+      inset: calc(var(--border-size) * -1);
+      border: var(--border-size) solid transparent;
+      border-radius: calc(var(--radius) * 1px + var(--border-size));
+      mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+      mask-clip: padding-box, border-box;
+      mask-composite: intersect;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+    }
+
+    .booking-card::before {
+      background-image: radial-gradient(
+        calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
+        var(--cx, -9999px) var(--cy, -9999px),
+        hsl(var(--hue) 100% 65% / var(--border-spot-opacity)),
+        transparent 100%
+      );
+      filter: brightness(3);
+    }
+
+    .booking-card::after {
+      background-image: radial-gradient(
+        calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at
+        var(--cx, -9999px) var(--cy, -9999px),
+        hsl(0 0% 100% / var(--border-light-opacity)),
+        transparent 100%
+      );
+    }
+
+    /* ── Icon wrapper ── */
+    .booking-card-icon {
+      width: 48px;
+      height: 48px;
+      color: #c9a96e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .booking-card-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* stroke-based icons (phone) */
+    .booking-card-icon.icon-stroke svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* fill-based icons (WhatsApp, Instagram) */
+    .booking-card-icon.icon-fill svg {
+      fill: #c9a96e;
+      stroke: none;
+    }
+
+    /* ── Card text ── */
+    .booking-card-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .booking-card-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-align: center;
+    }
+
+    .booking-card-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--medium-grey);
+      text-align: center;
+    }
+
+    /* ── Back link ── */
+    .booking-back {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--medium-grey);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      opacity: 0.7;
+      transition: opacity 0.25s ease, color 0.25s ease;
+    }
+
+    .booking-back:hover {
+      opacity: 1;
+      color: #c9a96e;
+    }
+
+    .booking-back svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 680px) {
+      .booking-cards {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+      }
+      .booking-card {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 28px 32px;
+        gap: 24px;
+      }
+      .booking-card-text { align-items: flex-start; }
+      .booking-card-icon { width: 40px; height: 40px; flex-shrink: 0; }
+      body { padding: 48px 20px; justify-content: flex-start; padding-top: 80px; }
+      .booking-header { margin-bottom: 44px; }
+      .booking-cards { margin-bottom: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="booking-header">
+    <span class="booking-eyebrow">Frizerski salon Kika</span>
+    <h1 class="booking-title">Rezervirajte svoj termin</h1>
+    <p class="booking-subtext">Odaberite način koji vam najviše odgovara. Vidimo se u salonu.</p>
+    <div class="booking-divider"></div>
+  </header>
+
+  <div class="booking-cards">
+
+    <!-- CARD 1: Telefon -->
+    <a href="tel:+3850919300893" class="booking-card">
+      <div class="booking-card-icon icon-stroke">
+        <svg viewBox="0 0 24 24">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>
+        </svg>
+      </div>
+      <div class="booking-card-text">
+        <div class="booking-card-label">Nazovite nas</div>
+        <div class="booking-card-sub">+385 091 930 0893</div>
+      </div>
+    </a>
+
+    <!-- CARD 2: WhatsApp -->
+    <a href="https://wa.me/3850919300893?text=Bok%20Kika%2C%20%C5%BEelim%20rezervirati%20termin%20za..." target="_blank" rel="noopener" class="booking-card">
+      <div class="booking-card-icon icon-fill">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+      <div class="booking-card-text">
+        <div class="booking-card-label">WhatsApp poruka</div>
+        <div class="booking-card-sub">Pišite nam odmah</div>
+      </div>
+    </a>
+
+    <!-- CARD 3: Instagram -->
+    <a href="https://instagram.com/kikabrijacnica" target="_blank" rel="noopener" class="booking-card">
+      <div class="booking-card-icon icon-fill">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+      </div>
+      <div class="booking-card-text">
+        <div class="booking-card-label">Instagram DM</div>
+        <div class="booking-card-sub">@kikabrijacnica</div>
+      </div>
+    </a>
+
+  </div>
+
+  <a href="index.html" class="booking-back">
+    <svg viewBox="0 0 24 24">
+      <line x1="19" y1="12" x2="5" y2="12"/>
+      <polyline points="12 19 5 12 12 5"/>
+    </svg>
+    Povratak na početnu
+  </a>
+
+  <script>
+    document.querySelectorAll('.booking-card').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty('--cx', (e.clientX - rect.left).toFixed(1) + 'px');
+        card.style.setProperty('--cy', (e.clientY - rect.top).toFixed(1) + 'px');
+        card.style.setProperty('--xp', ((e.clientX - rect.left) / rect.width).toFixed(3));
+      });
+      card.addEventListener('pointerleave', function () {
+        card.style.setProperty('--cx', '-9999px');
+        card.style.setProperty('--cy', '-9999px');
+      });
+    });
+  </script>
+
+</body>
+</html>

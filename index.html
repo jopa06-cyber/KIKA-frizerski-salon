@@ -7,28 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
-    :root {
-      --burgundy: #672f25;
-      --cream: #f4e4de;
-      --green: #708472;
-      --brown: #a16a38;
-      --text-grey: #e2e1df;
-      --light-grey: #d9d8d6;
-      --medium-grey: #afa99f;
-      --dark: #161616;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: auto; } /* Lenis handles all smooth scrolling */
-
     body {
       background-color: var(--dark);
       color: var(--text-grey);
       font-family: 'Sorts Mill Goudy', Georgia, serif;
       font-size: 15px;
       line-height: 1.7;
-      overflow-x: hidden;
     }
 
     /* ─── NAVIGACIJA ─── */
@@ -438,10 +424,10 @@
     }
 
     .story-text p {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 500;
       color: #484040;
-      line-height: 1.65;
+      line-height: 1.7;
       margin-bottom: 0; /* space-between manages the gaps */
       width: 100%;
       text-align: left;
@@ -468,14 +454,14 @@
     /* ─── USLUGE ─── */
     .services {
       background-color: #0a0a0a;
-      padding: 80px 0 96px;
+      padding: 56px 0 112px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
     .services-header {
       max-width: 1360px;
-      margin: 0 auto 56px;
+      margin: 0 auto 32px;
       padding: 0 64px;
       text-align: center;
     }
@@ -492,9 +478,9 @@
 
     .services-header p {
       color: var(--medium-grey);
-      font-size: 14px;
-      max-width: 480px;
-      line-height: 1.85;
+      font-size: 19px;
+      max-width: 680px;
+      line-height: 1.6;
       margin: 0 auto;
     }
 
@@ -505,6 +491,10 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
+    }
+
+    .service-slide {
+      opacity: 1;
     }
 
     /* ── 21st.dev spotlight-card border glow (element-relative coords) ── */
@@ -606,7 +596,7 @@
     .service-card-inner {
       position: relative;
       width: 100%;
-      height: 460px;
+      height: clamp(360px, 46vh, 460px);
       border-radius: 12px;
       overflow: hidden;
     }
@@ -619,6 +609,7 @@
       object-fit: cover;
       object-position: center;
       transition: transform 0.45s ease;
+      will-change: transform;
     }
 
     .service-slide a:hover .service-card-img {
@@ -641,26 +632,28 @@
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 28px 32px;
+      padding: 14px 20px;
       z-index: 2;
+      display: flex;
+      flex-direction: column;
     }
 
     .service-card-title {
       font-family: 'Sorts Mill Goudy', Georgia, serif;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 400;
       color: var(--cream);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       line-height: 1.15;
     }
 
     .service-card-desc {
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 400;
       color: rgba(240,236,228,0.72);
-      line-height: 1.65;
-      margin-bottom: 24px;
+      line-height: 1.55;
+      margin-bottom: 10px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       line-clamp: 2;
@@ -1147,6 +1140,13 @@
       line-height: 1.85;
     }
 
+    .location-info p.contact-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.7;
+    }
+
     .location-hours-row {
       display: flex;
       justify-content: space-between;
@@ -1440,6 +1440,12 @@
       perspective: 1200px;
       perspective-origin: center 30%;
     }
+
+    .scroll-container-wrap .services-grid {
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
   </style>
 </head>
 <body>
@@ -1452,8 +1458,8 @@
       <a href="#usluge" class="nav-link">Usluge</a>
       <a href="#tim" class="nav-link">Tim</a>
       <a href="#recenzije" class="nav-link">Recenzije</a>
-      <a href="#kontakt" class="nav-link">Kontakt</a>
-      <a href="#kontakt" class="nav-cta">Zakaži termin</a>
+      <a href="#lokacija" class="nav-link">Lokacija</a>
+      <a href="booking.html" class="nav-cta">Rezerviraj odmah</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Otvori izbornik">
       <svg id="hamburger-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1471,8 +1477,8 @@
   <a href="#usluge" class="nav-link">Usluge</a>
   <a href="#tim" class="nav-link">Tim</a>
   <a href="#recenzije" class="nav-link">Recenzije</a>
-  <a href="#kontakt" class="nav-link">Kontakt</a>
-  <a href="#kontakt" class="nav-cta">Zakaži termin</a>
+  <a href="#lokacija" class="nav-link">Lokacija</a>
+  <a href="#lokacija" class="nav-cta">Rezerviraj odmah</a>
 </div>
 
 <!-- HERO -->
@@ -1483,12 +1489,12 @@
 
   <div class="hero-inner">
     <div class="hero-content">
-      <span class="eyebrow">Vaša susjedska</span>
-      <h1 class="hero-title">Brijačnica</h1>
+      <span class="eyebrow">Frizerski salon</span>
+      <h1 class="hero-title">Kika</h1>
       <p class="hero-body">
-        Tradicionalna brijačnica smještena u srcu grada. Specijaliziramo se za precizno šišanje, klasično brijanje i uređivanje brade — uz posvećen odnos prema svakom gostu.
+        Od klasičnih šišanja do najnovijih trendova — Frizerski salon Kika pruža besprijekornu njegu za vašu kosu.
       </p>
-      <a href="#kontakt" class="cta-btn">Zakaži termin</a>
+      <a href="booking.html" class="cta-btn">Rezerviraj odmah</a>
     </div>
   </div>
 </section>
@@ -1499,24 +1505,22 @@
     <div class="story-text">
       <img src="Gemini_Generated_Image_wj0z25wj0z25wj0z-removebg-preview.png"
            alt="Kika Brijačnica logo"
+           loading="lazy"
            style="width:260px;height:260px;object-fit:contain;filter:invert(1);margin-bottom:0;display:block;image-rendering:auto;">
       <span class="label">Priča</span>
       <h2>Da skratimo priču...</h2>
       <p>
-        Sve je počelo s jednom stolicom, jednim parom škara i strašću prema dobro obavljenom poslu. Naša brijačnica nije samo mjesto za šišanje — to je zajednica.
+        Kreativnost i preciznost temelj su svega što radimo. Frizerski salon Kika nastao je iz želje da stvorimo destinaciju gdje svaki detalj ima važnost, a svaki klijent odlazi s frizurom koja nadilazi očekivanja.
       </p>
       <p>
-        Naš osnivač zanat je naučio od svog djeda, koji je vjerovao da istinski dobar brijač ne oblikuje samo kosu — oblikuje samopouzdanje. Svaki rez, svako brijanje, svaki topli ručnik ima svoju svrhu.
-      </p>
-      <p>
-        Dobrodošli kod nas. Ovdje se svaki gost tretira kao stalni gost.
+        Za nas, kosa je platno, a svaka posjeta salonu prilika za stvaranje nečeg unikatnog. Vaše povjerenje naša je najveća motivacija da svakim danom budemo još bolji.
       </p>
     </div>
     <div class="story-photos">
       <img class="photo-wide"
-           src="https://placehold.co/800x240/2a1f14/9a8060?text=." alt="">
-      <img src="https://placehold.co/400x190/231810/9a8060?text=." alt="">
-      <img src="https://placehold.co/400x190/1e160e/9a8060?text=." alt="">
+           src="https://placehold.co/800x240/2a1f14/9a8060?text=." alt="" loading="lazy">
+      <img src="https://placehold.co/400x190/231810/9a8060?text=." alt="" loading="lazy">
+      <img src="https://placehold.co/400x190/1e160e/9a8060?text=." alt="" loading="lazy">
     </div>
   </div>
 </section>
@@ -1526,14 +1530,14 @@
 <section class="services" id="usluge">
   <div class="services-header">
     <span class="label">Usluge</span>
-    <h2>Šišamo kosu,<br>ne kutove.</h2>
-    <p>Svaka usluga pružena je s pažnjom i preciznošću. Koristimo isključivo premium proizvode i provjerene tehnike.</p>
+    <h2>Vaša kosa u najboljim rukama</h2>
+    <p>Svaka usluga u salonu Kika rezultat je vrhunske tehnike i potpune posvećenosti detaljima. Koristimo isključivo premium proizvode kako bismo osigurali zdravlje i sjaj vaše kose.</p>
   </div>
 
   <div class="services-grid">
 
     <div class="service-slide">
-      <a href="#kontakt">
+      <a href="booking.html">
         <div class="service-card-inner">
           <img class="service-card-img" src="https://placehold.co/420x460/141414/c9a96e?text=Šišanje" alt="Šišanje">
           <div class="service-card-gradient"></div>
@@ -1551,7 +1555,7 @@
     </div>
 
     <div class="service-slide">
-      <a href="#kontakt">
+      <a href="booking.html">
         <div class="service-card-inner">
           <img class="service-card-img" src="https://placehold.co/420x460/141414/c9a96e?text=Brada" alt="Uređivanje brade">
           <div class="service-card-gradient"></div>
@@ -1569,7 +1573,7 @@
     </div>
 
     <div class="service-slide">
-      <a href="#kontakt">
+      <a href="booking.html">
         <div class="service-card-inner">
           <img class="service-card-img" src="https://placehold.co/420x460/141414/c9a96e?text=Kombo" alt="Šišanje i brada">
           <div class="service-card-gradient"></div>
@@ -1587,7 +1591,7 @@
     </div>
 
     <div class="service-slide">
-      <a href="#kontakt">
+      <a href="booking.html">
         <div class="service-card-inner">
           <img class="service-card-img" src="https://placehold.co/420x460/141414/c9a96e?text=Brijanje" alt="Brijanje vrućim ručnikom">
           <div class="service-card-gradient"></div>
@@ -1616,7 +1620,7 @@
       <div class="team-photo-side">
         <div class="team-photo-glow"></div>
         <div class="team-photo-frame">
-          <img src="https://placehold.co/480x640/141414/c9a96e" alt="Vlasnik & Master Brijač">
+          <img src="https://placehold.co/480x640/141414/c9a96e" alt="Vlasnik & Master Brijač" loading="lazy">
         </div>
       </div>
 
@@ -1624,13 +1628,11 @@
       <div class="team-content-side">
         <span class="team-eyebrow">Vještina i Strast</span>
         <h2>Majstor iza stolice</h2>
-        <div class="team-barber-name">Marko</div>
-        <div class="team-barber-title">Vlasnik &amp; Master Brijač</div>
+        <div class="team-barber-name">Kristina</div>
+        <div class="team-barber-title">Vlasnik &amp; Stilist</div>
         <div class="team-divider"></div>
         <p class="team-bio">
-          Svaki rez je priča za sebe — preciznost i strast nisu mi posao, već životni poziv.
-          Uz više od deset godina iskustva, vjerujem da pravi brijač ne samo šiša,
-          već gradi povjerenje s kojim se svaki klijent rado vraća.
+          Kroz godine rada, Kristina je izgradila prepoznatljiv stil temeljen na povjerenju i kvaliteti. Svaki posjet salonu vidi kao priliku za stvaranje nečeg unikatnog, osiguravajući da se svaki klijent osjeća opušteno, cijenjeno i, iznad svega, zadovoljno svojim novim izgledom.
         </p>
         <a href="https://instagram.com/kikabrijacnica" target="_blank" rel="noopener" class="team-insta">
           <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1710,26 +1712,25 @@
 </section>
 
 <!-- LOKACIJA -->
-<section class="location" id="kontakt">
+<section class="location" id="lokacija">
   <div class="location-container">
     <div class="location-text">
-      <span class="label">Pronađite nas</span>
-      <h2>Centar<br>Grada</h2>
+      <h2>Pronađite nas</h2>
       <div class="location-info">
         <h4>Adresa</h4>
-        <p>Ilica 42<br>10000 Zagreb, Hrvatska</p>
+        <p class="contact-value">Jaruščica 7<br>10020 Zagreb, Hrvatska</p>
       </div>
       <div class="location-info">
         <h4>Telefon</h4>
-        <p>+385 1 234 5678</p>
+        <p class="contact-value">+385 091 930 0893</p>
       </div>
       <div class="location-info">
         <h4>Radno vrijeme</h4>
         <div class="location-hours-row">
-          <span>Ponedjeljak – Petak</span><span>10:00 – 20:00</span>
+          <span>Ponedjeljak – Petak</span><span>16:00 – 20:00</span>
         </div>
-        <div class="location-hours-row">
-          <span>Subota</span><span>9:00 – 18:00</span>
+        <div class="location-hours-row closed">
+          <span>Subota</span><span>Zatvoreno</span>
         </div>
         <div class="location-hours-row closed">
           <span>Nedjelja</span><span>Zatvoreno</span>
@@ -1774,7 +1775,7 @@
 
       <div class="footer-left">
         <img src="Gemini_Generated_Image_wj0z25wj0z25wj0z-removebg-preview.png"
-             alt="Kika Brijačnica" class="footer-logo">
+             alt="Kika Brijačnica" class="footer-logo" loading="lazy">
         <div class="footer-col-label">Pratite nas</div>
         <div class="footer-social">
           <a href="https://instagram.com/kikabrijacnica" target="_blank" rel="noopener">Instagram</a>
@@ -1793,7 +1794,7 @@
       </div>
 
       <div class="footer-right">
-        <a href="#kontakt" class="footer-cta-btn">
+        <a href="booking.html" class="footer-cta-btn">
           <span>Rezerviraj odmah</span>
         </a>
       </div>
@@ -1857,7 +1858,7 @@
   })();
 
   // ── FlowArt-inspired GSAP Scroll Animation System ────────────────────
-  (function () {
+  window.addEventListener('load', function () {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     gsap.registerPlugin(ScrollTrigger);
@@ -1866,93 +1867,72 @@
     var isMobile = window.innerWidth <= 768;
 
     // ── Section fade + slide ─────────────────────────────────────────────
-    document.querySelectorAll('.story, .services, .team, .reviews, .location').forEach(function (sec) {
+    document.querySelectorAll('.story, .team, .reviews, .location').forEach(function (sec) {
       gsap.fromTo(sec,
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.9, ease: EASE,
-          scrollTrigger: { trigger: sec, start: 'top 88%', once: true } }
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.6, ease: EASE,
+          scrollTrigger: { trigger: sec, start: 'top 100%', once: true } }
       );
     });
 
-    // ── Gold headings: blur-in + scale (luxury emphasis) ─────────────────
+// ── Gold headings: blur-in + scale (luxury emphasis) ─────────────────
     document.querySelectorAll(
       '.story-text h2, .services-header h2, .team-content-side h2, .reviews-header h2, .location-text h2'
     ).forEach(function (el) {
-      var from = { opacity: 0, y: 36, scale: 0.96 };
-      var to   = { opacity: 1, y: 0,  scale: 1,    duration: 0.95, ease: EASE, delay: 0.08,
-                   scrollTrigger: { trigger: el, start: 'top 86%', once: true } };
-      if (!isMobile) { from.filter = 'blur(8px)'; to.filter = 'blur(0px)'; }
+      var from = { opacity: 0, y: 20, scale: 0.97 };
+      var to   = { opacity: 1, y: 0,  scale: 1, duration: 0.6, ease: EASE, delay: 0.05,
+                   scrollTrigger: { trigger: el, start: 'top 100%', once: true } };
+      if (!isMobile) { from.filter = 'blur(6px)'; to.filter = 'blur(0px)'; }
       gsap.fromTo(el, from, to);
     });
 
     // ── Section labels ────────────────────────────────────────────────────
     document.querySelectorAll('.label').forEach(function (el) {
       gsap.fromTo(el,
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.7, ease: EASE,
-          scrollTrigger: { trigger: el, start: 'top 88%', once: true } }
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.5, ease: EASE,
+          scrollTrigger: { trigger: el, start: 'top 100%', once: true } }
       );
     });
 
     // ── Body copy ─────────────────────────────────────────────────────────
     document.querySelectorAll('.services-header p, .team-bio, .story-text p').forEach(function (el) {
       gsap.fromTo(el,
-        { opacity: 0, y: 22 },
-        { opacity: 1, y: 0, duration: 0.8, ease: EASE, delay: 0.12,
-          scrollTrigger: { trigger: el, start: 'top 87%', once: true } }
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.6, ease: EASE, delay: 0.08,
+          scrollTrigger: { trigger: el, start: 'top 100%', once: true } }
       );
     });
 
-    // ── Service cards: staggered 0.15s, left → right ─────────────────────
-    gsap.fromTo('.service-slide',
-      { opacity: 0, y: 52 },
-      { opacity: 1, y: 0, duration: 0.8, ease: EASE, stagger: 0.15,
-        scrollTrigger: { trigger: '.services-grid', start: 'top 82%', once: true } }
-    );
-
-    // ── Review cards: staggered 0.15s ────────────────────────────────────
+    // ── Review cards: staggered ───────────────────────────────────────────
     gsap.fromTo('.review-card',
-      { opacity: 0, y: 48 },
-      { opacity: 1, y: 0, duration: 0.8, ease: EASE, stagger: 0.15,
-        scrollTrigger: { trigger: '.reviews-grid', start: 'top 82%', once: true } }
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.5, ease: EASE, stagger: 0.1,
+        scrollTrigger: { trigger: '.reviews-grid', start: 'top 100%', once: true } }
     );
 
     // ── Team split: photo fade-scale + content stagger ───────────────────
     gsap.fromTo('.team-photo-frame',
-      { opacity: 0, scale: 0.96 },
-      { opacity: 1, scale: 1, duration: 0.95, ease: EASE,
-        scrollTrigger: { trigger: '.team-split', start: 'top 80%', once: true } }
+      { opacity: 0, scale: 0.97 },
+      { opacity: 1, scale: 1, duration: 0.6, ease: EASE,
+        scrollTrigger: { trigger: '.team-split', start: 'top 100%', once: true } }
     );
     gsap.fromTo('.team-eyebrow, .team-content-side h2, .team-barber-name, .team-barber-title, .team-divider, .team-bio, .team-insta',
-      { opacity: 0, y: 28 },
-      { opacity: 1, y: 0, duration: 0.75, ease: EASE, stagger: 0.1,
-        scrollTrigger: { trigger: '.team-split', start: 'top 78%', once: true } }
+      { opacity: 0, y: 18 },
+      { opacity: 1, y: 0, duration: 0.5, ease: EASE, stagger: 0.07,
+        scrollTrigger: { trigger: '.team-split', start: 'top 100%', once: true } }
     );
 
     // ── Location info: staggered slide from left ──────────────────────────
     gsap.fromTo('.location-info',
-      { opacity: 0, x: -32 },
-      { opacity: 1, x: 0, duration: 0.75, ease: EASE, stagger: 0.12,
-        scrollTrigger: { trigger: '.location-text', start: 'top 80%', once: true } }
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 0.5, ease: EASE, stagger: 0.08,
+        scrollTrigger: { trigger: '.location-text', start: 'top 100%', once: true } }
     );
 
-    // ── ContainerScroll: scrub-driven 3D perspective on services grid ─────
-    var grid = document.querySelector('.services-grid');
-    if (grid) {
-      var wrap = document.createElement('div');
-      wrap.className = 'scroll-container-wrap';
-      grid.parentNode.insertBefore(wrap, grid);
-      wrap.appendChild(grid);
-      grid.style.transformOrigin = 'center top';
 
-      gsap.fromTo(grid,
-        { rotationX: 16, scale: 1.04 },
-        { rotationX: 0,  scale: 1,    ease: 'none',
-          scrollTrigger: { trigger: wrap, start: 'top bottom', end: 'top 15%', scrub: 1.8 } }
-      );
-    }
-
-  })();
+    ScrollTrigger.refresh();
+  });
 
   // ── Review + service card glow: per-card element-relative cursor tracking ──
   (function () {

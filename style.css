@@ -1,0 +1,32 @@
+/* ─── Kika Frizerski salon — shared base styles ─── */
+
+/* ─── RESET ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── CSS VARIABLES ─── */
+:root {
+  --burgundy: #672f25;
+  --cream: #f4e4de;
+  --green: #708472;
+  --brown: #a16a38;
+  --text-grey: #e2e1df;
+  --light-grey: #d9d8d6;
+  --medium-grey: #afa99f;
+  --dark: #161616;
+}
+
+/* ─── HTML / BODY BASE ─── */
+html {
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
