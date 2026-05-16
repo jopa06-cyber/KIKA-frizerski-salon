@@ -678,6 +678,32 @@
     .service-slide a:hover .service-card-link { gap: 13px; }
     .service-slide a:hover .service-card-link svg { transform: translateX(3px); }
 
+    /* ─── SERVICES: mobile ─── */
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        gap: 20px;
+      }
+
+      .service-slide a {
+        height: auto;
+      }
+
+      .service-card-img-wrap {
+        flex: none;
+        height: 220px;
+      }
+
+      .service-card-title {
+        font-size: 18px;
+      }
+
+      .service-card-text-body {
+        padding: 12px 16px 16px;
+      }
+    }
+
     /* ─── TIM ─── */
     .team {
       background-color: #111;
@@ -825,6 +851,20 @@
       }
       .team-photo-frame img {
         aspect-ratio: 4/5;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .team-split {
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+      }
+      .team-content-side {
+        order: 1;
+      }
+      .team-photo-side {
+        order: 2;
       }
     }
 
@@ -1406,6 +1446,40 @@
       .footer-right { align-items: flex-start; }
       .footer-nav { align-items: flex-start; }
       .footer-bottom { padding: 16px 40px 28px; }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        gap: 28px;
+        text-align: center;
+      }
+      .footer-left,
+      .footer-center,
+      .footer-right {
+        align-items: center;
+        justify-self: stretch;
+      }
+      .footer-logo {
+        margin: 0 auto 20px;
+      }
+      .footer-social,
+      .footer-nav {
+        align-items: center;
+        width: 100%;
+      }
+      .footer-social a,
+      .footer-nav a {
+        width: auto;
+        text-align: center;
+      }
+      .footer-right {
+        align-items: center;
+      }
+      .footer-cta-btn {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+      }
     }
 
     @media (max-width: 600px) {
