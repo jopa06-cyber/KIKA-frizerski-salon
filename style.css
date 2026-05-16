@@ -19,6 +19,17 @@
   --dark: #161616;
 }
 
+/* ─── SERVICE CARD: per-image position overrides ─── */
+.beard-img {
+  object-fit: cover !important;
+  object-position: 25% center !important;
+}
+
+.kombo-img {
+  object-fit: cover !important;
+  object-position: center 15% !important;
+}
+
 /* ─── HTML / BODY BASE ─── */
 html {
   scroll-behavior: auto;

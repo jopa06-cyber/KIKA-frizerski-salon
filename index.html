@@ -499,7 +499,9 @@
 
     /* ── 21st.dev spotlight-card border glow (element-relative coords) ── */
     .service-slide a {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      height: clamp(360px, 46vh, 460px);
       text-decoration: none;
       position: relative;
       touch-action: none;
@@ -593,21 +595,19 @@
       -webkit-mask-composite: xor;
     }
 
-    .service-card-inner {
-      position: relative;
-      width: 100%;
-      height: clamp(360px, 46vh, 460px);
-      border-radius: 12px;
+    .service-card-img-wrap {
+      flex: 3;
+      min-height: 0;
       overflow: hidden;
+      border-radius: 12px 12px 0 0;
     }
 
     .service-card-img {
-      position: absolute;
-      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
+      display: block;
       transition: transform 0.45s ease;
       will-change: transform;
     }
@@ -616,26 +616,14 @@
       transform: scale(1.06);
     }
 
-    .service-card-gradient {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        transparent 20%,
-        rgba(0,0,0,0.42) 55%,
-        rgba(0,0,0,0.88) 100%
-      );
-    }
-
-    .service-card-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 14px 20px;
-      z-index: 2;
+    .service-card-text-body {
+      flex: 1;
+      min-height: 0;
       display: flex;
       flex-direction: column;
+      padding: 14px 20px 18px;
+      background: #141414;
+      border-radius: 0 0 12px 12px;
     }
 
     .service-card-title {
@@ -672,6 +660,7 @@
       text-transform: uppercase;
       color: #c9a96e;
       transition: gap 0.25s ease;
+      margin-top: auto;
     }
 
     .service-card-link svg {
@@ -1538,16 +1527,18 @@
 
     <div class="service-slide">
       <a href="booking.html">
-        <div class="service-card-inner">
-          <img class="service-card-img" src="https://placehold.co/420x460/141414/c9a96e?text=Šišanje" alt="Šišanje">
-          <div class="service-card-gradient"></div>
-          <div class="service-card-content">
-            <div class="service-card-title">Šišanje</div>
-            <p class="service-card-desc">Precizno šišanje prilagođeno vašem obliku lica i željenom stilu. Savjetovanje uključeno u svaki posjet.</p>
-            <div class="service-card-link">
-              Zakaži termin
-              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
+        <div class="service-card-img-wrap">
+          <img class="service-card-img"
+               src="Mid-Fade-Haircut_600x600.webp"
+               alt="Klasično i moderno šišanje"
+               loading="lazy">
+        </div>
+        <div class="service-card-text-body">
+          <div class="service-card-title">Šišanje</div>
+          <p class="service-card-desc">Precizno šišanje prilagođeno Vašem obliku lica i željenom stilu</p>
+          <div class="service-card-link">
+            Zakaži termin
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
         <div class="service-glow-inner"></div>
@@ -1556,16 +1547,15 @@
 
     <div class="service-slide">
       <a href="booking.html">
-        <div class="service-card-inner">
-          <img class="service-card-img" src="https://placehold.co/420x460/141414/c9a96e?text=Brada" alt="Uređivanje brade">
-          <div class="service-card-gradient"></div>
-          <div class="service-card-content">
-            <div class="service-card-title">Uređivanje brade</div>
-            <p class="service-card-desc">Oblikovanje i uređivanje brade koje naglašava vaše crte lica i daje savršen završni izgled.</p>
-            <div class="service-card-link">
-              Zakaži termin
-              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
+        <div class="service-card-img-wrap">
+          <img class="service-card-img beard-img" src="brada.jpg" alt="Uređivanje i oblikovanje brade" loading="lazy">
+        </div>
+        <div class="service-card-text-body">
+          <div class="service-card-title">Uređivanje brade</div>
+          <p class="service-card-desc">Oblikovanje i uređivanje brade koje naglašava Vaše crte lica</p>
+          <div class="service-card-link">
+            Zakaži termin
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
         <div class="service-glow-inner"></div>
@@ -1574,16 +1564,15 @@
 
     <div class="service-slide">
       <a href="booking.html">
-        <div class="service-card-inner">
-          <img class="service-card-img" src="https://placehold.co/420x460/141414/c9a96e?text=Kombo" alt="Šišanje i brada">
-          <div class="service-card-gradient"></div>
-          <div class="service-card-content">
-            <div class="service-card-title">Šišanje i brada</div>
-            <p class="service-card-desc">Kompletni tretman — šišanje i uređivanje brade u jednoj sesiji za potpunu transformaciju.</p>
-            <div class="service-card-link">
-              Zakaži termin
-              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
+        <div class="service-card-img-wrap">
+          <img class="service-card-img kombo-img" src="Gemini_Generated_Image_lo3xsrlo3xsrlo3x.png" alt="Šišanje i brada kombo tretman" loading="lazy">
+        </div>
+        <div class="service-card-text-body">
+          <div class="service-card-title">Šišanje i brada</div>
+          <p class="service-card-desc">Kompletni tretman — Šišanje i uređivanje brade u jednoj sesiji</p>
+          <div class="service-card-link">
+            Zakaži termin
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
         <div class="service-glow-inner"></div>
@@ -1592,16 +1581,15 @@
 
     <div class="service-slide">
       <a href="booking.html">
-        <div class="service-card-inner">
-          <img class="service-card-img" src="https://placehold.co/420x460/141414/c9a96e?text=Brijanje" alt="Brijanje vrućim ručnikom">
-          <div class="service-card-gradient"></div>
-          <div class="service-card-content">
-            <div class="service-card-title">Brijanje vrućim ručnikom</div>
-            <p class="service-card-desc">Klasično brijanje ravnom britvom uz topli ručnik — pravo iskustvo za modernog muškarca.</p>
-            <div class="service-card-link">
-              Zakaži termin
-              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </div>
+        <div class="service-card-img-wrap">
+          <img class="service-card-img" src="https://placehold.co/420x460/141414/c9a96e?text=Brijanje" alt="Brijanje vrućim ručnikom" loading="lazy">
+        </div>
+        <div class="service-card-text-body">
+          <div class="service-card-title">Brijanje vrućim ručnikom</div>
+          <p class="service-card-desc">Klasično brijanje ravnom britvom uz topli ručnik — pravo iskustvo za modernog muškarca.</p>
+          <div class="service-card-link">
+            Zakaži termin
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
         <div class="service-glow-inner"></div>
@@ -1805,7 +1793,7 @@
 
   <!-- Copyright bar below the brand band -->
   <div class="footer-bottom">
-    <div class="footer-copy">© 2025 Kika Brijačnica — Sva prava pridržana</div>
+    <div class="footer-copy">© 2026 Kika Brijačnica — Sva prava pridržana</div>
   </div>
 
 </footer>
@@ -1903,6 +1891,13 @@
           scrollTrigger: { trigger: el, start: 'top 100%', once: true } }
       );
     });
+
+    // ── Service slides: staggered fade-in (includes .service-card-photo) ──
+    gsap.fromTo('.service-slide',
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.5, ease: EASE, stagger: 0.1,
+        scrollTrigger: { trigger: '.services-grid', start: 'top 100%', once: true } }
+    );
 
     // ── Review cards: staggered ───────────────────────────────────────────
     gsap.fromTo('.review-card',
