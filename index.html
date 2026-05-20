@@ -2061,49 +2061,6 @@
     });
   })();
 
-  // ── Cookie consent ──
-  (function () {
-    var CONSENT_KEY = 'kika_cookie_consent';
-
-    function hasConsent() {
-      try {
-        return localStorage.getItem(CONSENT_KEY) === '1';
-      } catch (_) {
-        var match = document.cookie.match('(?:^|; )' + CONSENT_KEY + '=([^;]*)');
-        return match && match[1] === '1';
-      }
-    }
-
-    function saveConsent() {
-      try {
-        localStorage.setItem(CONSENT_KEY, '1');
-      } catch (_) {}
-      var exp = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
-      document.cookie = CONSENT_KEY + '=1; expires=' + exp + '; path=/; SameSite=Lax';
-    }
-
-    if (hasConsent()) return;
-
-    var banner = document.getElementById('cookie-banner');
-    if (!banner) return;
-
-    // Reveal after short delay so page paint completes first
-    setTimeout(function () {
-      banner.classList.remove('translate-y-full', 'opacity-0');
-      banner.classList.add('translate-y-0', 'opacity-100');
-    }, 800);
-
-    document.getElementById('cookie-accept').addEventListener('click', function () {
-      saveConsent();
-      banner.classList.remove('translate-y-0', 'opacity-100');
-      banner.classList.add('translate-y-full', 'opacity-0');
-    });
-
-    document.getElementById('cookie-decline').addEventListener('click', function () {
-      banner.classList.remove('translate-y-0', 'opacity-100');
-      banner.classList.add('translate-y-full', 'opacity-0');
-    });
-  })();
 
 </script>
 
@@ -2155,6 +2112,49 @@
     </div>
   </div>
 </div>
+
+<script>
+  (function () {
+    var CONSENT_KEY = 'kika_cookie_consent';
+
+    function hasConsent() {
+      try {
+        return localStorage.getItem(CONSENT_KEY) === '1';
+      } catch (_) {
+        var match = document.cookie.match('(?:^|; )' + CONSENT_KEY + '=([^;]*)');
+        return match && match[1] === '1';
+      }
+    }
+
+    function saveConsent() {
+      try {
+        localStorage.setItem(CONSENT_KEY, '1');
+      } catch (_) {}
+      var exp = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+      document.cookie = CONSENT_KEY + '=1; expires=' + exp + '; path=/; SameSite=Lax';
+    }
+
+    if (hasConsent()) return;
+
+    var banner = document.getElementById('cookie-banner');
+
+    setTimeout(function () {
+      banner.classList.remove('translate-y-full', 'opacity-0');
+      banner.classList.add('translate-y-0', 'opacity-100');
+    }, 800);
+
+    document.getElementById('cookie-accept').addEventListener('click', function () {
+      saveConsent();
+      banner.classList.remove('translate-y-0', 'opacity-100');
+      banner.classList.add('translate-y-full', 'opacity-0');
+    });
+
+    document.getElementById('cookie-decline').addEventListener('click', function () {
+      banner.classList.remove('translate-y-0', 'opacity-100');
+      banner.classList.add('translate-y-full', 'opacity-0');
+    });
+  })();
+</script>
 
 </body>
 </html>
