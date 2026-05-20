@@ -520,10 +520,12 @@
       transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    /* Reliable box-shadow glow on hover — visible regardless of mask support */
-    .service-slide a:hover {
-      border-color: rgba(201, 169, 110, 0.55);
-      box-shadow: 0 0 28px rgba(201, 169, 110, 0.4), 0 0 64px rgba(201, 169, 110, 0.18);
+    /* Reliable box-shadow glow on hover — desktop/mouse only, suppressed on touch screens */
+    @media (hover: hover) and (pointer: fine) {
+      .service-slide a:hover {
+        border-color: rgba(201, 169, 110, 0.55);
+        box-shadow: 0 0 28px rgba(201, 169, 110, 0.4), 0 0 64px rgba(201, 169, 110, 0.18);
+      }
     }
 
     /* Shared pseudo-element base — border-strip masked gradient overlay */
