@@ -2061,6 +2061,100 @@
     });
   })();
 
+  // ── Cookie consent ──
+  (function () {
+    var CONSENT_KEY = 'kika_cookie_consent';
+
+    function hasConsent() {
+      try {
+        return localStorage.getItem(CONSENT_KEY) === '1';
+      } catch (_) {
+        var match = document.cookie.match('(?:^|; )' + CONSENT_KEY + '=([^;]*)');
+        return match && match[1] === '1';
+      }
+    }
+
+    function saveConsent() {
+      try {
+        localStorage.setItem(CONSENT_KEY, '1');
+      } catch (_) {}
+      var exp = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+      document.cookie = CONSENT_KEY + '=1; expires=' + exp + '; path=/; SameSite=Lax';
+    }
+
+    if (hasConsent()) return;
+
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    // Reveal after short delay so page paint completes first
+    setTimeout(function () {
+      banner.classList.remove('translate-y-full', 'opacity-0');
+      banner.classList.add('translate-y-0', 'opacity-100');
+    }, 800);
+
+    document.getElementById('cookie-accept').addEventListener('click', function () {
+      saveConsent();
+      banner.classList.remove('translate-y-0', 'opacity-100');
+      banner.classList.add('translate-y-full', 'opacity-0');
+    });
+
+    document.getElementById('cookie-decline').addEventListener('click', function () {
+      banner.classList.remove('translate-y-0', 'opacity-100');
+      banner.classList.add('translate-y-full', 'opacity-0');
+    });
+  })();
+
 </script>
+
+<!-- ── Cookie consent banner ── -->
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 left-0 right-0 z-[9999] translate-y-full opacity-0 transition-all duration-500 ease-out"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Obavijest o kolačićima"
+>
+  <div style="background:#141414; border-top:1px solid rgba(255,255,255,0.07); box-shadow:0 -8px 40px rgba(0,0,0,0.6), 0 -1px 0 rgba(201,169,110,0.12);">
+    <div class="max-w-screen-xl mx-auto px-5 py-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+
+      <!-- Text -->
+      <div class="flex items-start gap-3 min-w-0">
+        <!-- Cookie icon -->
+        <svg class="shrink-0 mt-0.5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a96e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/>
+          <path d="M8.5 8.5v.01M16 15.5v.01M12 12v.01"/>
+        </svg>
+        <div>
+          <p class="text-sm leading-relaxed" style="color:#f0ece4;">
+            Koristimo kolačiće kako bismo poboljšali vaše iskustvo na stranici.
+            <a href="#" class="underline underline-offset-2 transition-colors duration-200" style="color:#c9a96e;" onmouseover="this.style.color='#e8c88a'" onmouseout="this.style.color='#c9a96e'">Saznajte više</a>
+            o tome kako koristimo vaše podatke.
+          </p>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex items-center gap-3 shrink-0">
+        <button
+          id="cookie-decline"
+          class="text-sm px-4 py-2 rounded-md transition-colors duration-200"
+          style="color:#888077; background:transparent; border:1px solid rgba(255,255,255,0.07);"
+          onmouseover="this.style.color='#f0ece4'; this.style.borderColor='rgba(255,255,255,0.18)'"
+          onmouseout="this.style.color='#888077'; this.style.borderColor='rgba(255,255,255,0.07)'"
+        >Odbij</button>
+        <button
+          id="cookie-accept"
+          class="text-sm font-medium px-5 py-2 rounded-md transition-all duration-200"
+          style="background:linear-gradient(135deg,#c9a96e,#b8904d); color:#0a0a0a; box-shadow:0 2px 12px rgba(201,169,110,0.25);"
+          onmouseover="this.style.background='linear-gradient(135deg,#e8c88a,#c9a96e)'; this.style.boxShadow='0 4px 20px rgba(201,169,110,0.4)'"
+          onmouseout="this.style.background='linear-gradient(135deg,#c9a96e,#b8904d)'; this.style.boxShadow='0 2px 12px rgba(201,169,110,0.25)'"
+        >Prihvati</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
