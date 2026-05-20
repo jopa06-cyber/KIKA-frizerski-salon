@@ -486,7 +486,13 @@
 
       /* Swap to the native 9:16 portrait video on mobile */
       .hero-video--desktop { display: none; }
-      .hero-video--mobile  { display: block; }
+      .hero-video--mobile  {
+        display: block;
+        /* Zoom in slightly so the artwork fills more vertical space.
+           1.08 = ~4% crop per edge — keeps scissors/razor/mustache safe. */
+        transform: scale(1.08);
+        transform-origin: center center;
+      }
       /* Reduce padding so the content box sits comfortably */
       .hero-inner {
         padding: 100px 20px 60px;
