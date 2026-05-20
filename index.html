@@ -216,6 +216,10 @@
       z-index: 0;
     }
 
+    /* Desktop video on by default, mobile video off */
+    .hero-video--mobile { display: none; }
+    .hero-video--desktop { display: block; }
+
     /* uniform dark veil over the full video */
     .hero::before {
       content: '';
@@ -449,6 +453,62 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    /* ─── HERO: mobile ─── */
+    @media (max-width: 768px) {
+      /* Deep charcoal base — warm radial lift at centre, no pure black */
+      .hero {
+        background:
+          radial-gradient(
+            ellipse 85% 55% at 50% 44%,
+            #252018 0%,
+            #1a1610 45%,
+            #131109 80%,
+            #0e0c08 100%
+          );
+      }
+
+      /* Soften the dark veil to a warm charcoal tint on mobile */
+      .hero::before {
+        background: rgba(18, 15, 10, 0.30);
+      }
+
+      /* Soften the edge vignette — no pure black, warm dark tone */
+      .hero::after {
+        background: radial-gradient(
+          ellipse at center,
+          transparent 28%,
+          rgba(14, 12, 8, 0.45) 62%,
+          rgba(10, 8, 5, 0.72) 100%
+        );
+      }
+
+      /* Swap to the native 9:16 portrait video on mobile */
+      .hero-video--desktop { display: none; }
+      .hero-video--mobile  { display: block; }
+      /* Reduce padding so the content box sits comfortably */
+      .hero-inner {
+        padding: 100px 20px 60px;
+      }
+      /* Slightly smaller body text, full-width glass box */
+      .hero-body {
+        font-size: 15px;
+        padding: 14px 16px;
+        max-width: 100%;
+        margin-bottom: 32px;
+      }
+      /* Compact button */
+      .cta-btn {
+        padding: 16px 36px;
+        letter-spacing: 2px;
+      }
+      /* Shrink the badge on small screens */
+      .hero-badge {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 20px;
+      }
     }
 
     /* ─── USLUGE ─── */
@@ -1567,8 +1627,13 @@
 
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-video" autoplay loop muted playsinline>
+  <!-- Desktop landscape video (hidden on mobile) -->
+  <video class="hero-video hero-video--desktop" autoplay loop muted playsinline>
     <source src="Take_the_existing_animation_an_Kling_30__64232.mp4" type="video/mp4">
+  </video>
+  <!-- Mobile portrait 9:16 video (hidden on desktop) -->
+  <video class="hero-video hero-video--mobile" autoplay loop muted playsinline>
+    <source src="Duration_Format_5_seconds_seam_Kling_30__46411.mp4" type="video/mp4">
   </video>
 
   <div class="hero-inner">
