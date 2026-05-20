@@ -932,9 +932,20 @@
       transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .review-card:hover {
-      border-color: rgba(201, 169, 110, 0.55);
-      box-shadow: 0 0 28px rgba(201, 169, 110, 0.4), 0 0 64px rgba(201, 169, 110, 0.18);
+    /* Box-shadow glow + spotlight — desktop only */
+    @media (min-width: 769px) {
+      .review-card:hover {
+        border-color: rgba(201, 169, 110, 0.55);
+        box-shadow: 0 0 28px rgba(201, 169, 110, 0.4), 0 0 64px rgba(201, 169, 110, 0.18);
+      }
+    }
+
+    /* Kill spotlight gradient variables on mobile */
+    @media (max-width: 768px) {
+      .review-card {
+        --border-spot-opacity: 0;
+        --border-light-opacity: 0;
+      }
     }
 
     .review-card::before,
@@ -2015,6 +2026,7 @@
 
   // ── Review + service card glow: per-card element-relative cursor tracking ──
   (function () {
+    if (window.innerWidth < 769) return;
     document.querySelectorAll('.review-card').forEach(function (card) {
       card.addEventListener('pointermove', function (e) {
         var rect = card.getBoundingClientRect();
