@@ -520,11 +520,19 @@
       transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    /* Reliable box-shadow glow on hover — desktop/mouse only, suppressed on touch screens */
-    @media (hover: hover) and (pointer: fine) {
+    /* Box-shadow glow + spotlight — desktop only (viewport-based, reliable on all browsers) */
+    @media (min-width: 769px) {
       .service-slide a:hover {
         border-color: rgba(201, 169, 110, 0.55);
         box-shadow: 0 0 28px rgba(201, 169, 110, 0.4), 0 0 64px rgba(201, 169, 110, 0.18);
+      }
+    }
+
+    /* Kill spotlight gradient variables on mobile */
+    @media (max-width: 768px) {
+      .service-slide a {
+        --border-spot-opacity: 0;
+        --border-light-opacity: 0;
       }
     }
 
@@ -2024,6 +2032,7 @@
   })();
 
   (function () {
+    if (window.innerWidth < 769) return;
     document.querySelectorAll('.service-slide a').forEach(function (card) {
       card.addEventListener('pointermove', function (e) {
         var rect = card.getBoundingClientRect();
