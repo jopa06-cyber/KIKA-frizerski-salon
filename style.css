@@ -20,6 +20,11 @@
 }
 
 /* ─── SERVICE CARD: per-image position overrides ─── */
+.haircut-img {
+  object-fit: cover !important;
+  object-position: 50% calc(1% - 20px) !important;
+}
+
 .beard-img {
   object-fit: cover !important;
   object-position: 25% center !important;

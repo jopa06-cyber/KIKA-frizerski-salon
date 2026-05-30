@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kika Brijačnica</title>
+  <title>Style &amp; Smile — Frizerski salon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
       max-width: 1100px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       padding: 20px 0;
       transition: background 0.45s cubic-bezier(0.4,0,0.2,1),
                   padding 0.45s cubic-bezier(0.4,0,0.2,1),
@@ -47,9 +47,32 @@
     }
 
     .nav-links-desktop {
+      flex: 1;
       display: flex;
       align-items: center;
-      gap: 48px;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+      opacity: 0.82;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
     }
 
     .nav-link {
@@ -84,6 +107,7 @@
       font-size: 11px;
       font-family: 'Sorts Mill Goudy', serif;
       font-weight: 600;
+      white-space: nowrap;
       cursor: pointer;
       transition: background-position 0.5s ease, transform 0.3s ease;
       z-index: 0;
@@ -145,8 +169,9 @@
     /* ── Mobile ── */
     @media (max-width: 767px) {
       .nav-links-desktop { display: none; }
+      .nav-cta { display: none; }
       .nav-hamburger { display: flex; align-items: center; justify-content: center; }
-      .nav-bar { justify-content: flex-end; padding: 16px 0; }
+      .nav-bar { justify-content: space-between; padding: 16px 0; }
       nav#main-nav.scrolled .nav-bar {
         background: rgba(10, 10, 10, 0.82);
         backdrop-filter: blur(18px);
@@ -555,7 +580,7 @@
       margin: 0 auto;
       padding: 0 64px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
@@ -1603,14 +1628,18 @@
 <!-- NAVIGACIJA -->
 <nav id="main-nav">
   <div class="nav-bar">
+    <a href="#hero" class="nav-logo">
+      <img src="Gemini_Generated_Image_wj0z25wj0z25wj0z-removebg-preview.png" alt="Kika" width="36" height="36">
+    </a>
     <div class="nav-links-desktop">
       <a href="#prica" class="nav-link">Priča</a>
       <a href="#usluge" class="nav-link">Usluge</a>
       <a href="#tim" class="nav-link">Tim</a>
       <a href="#recenzije" class="nav-link">Recenzije</a>
       <a href="#lokacija" class="nav-link">Lokacija</a>
-      <a href="booking.html" class="nav-cta">Rezerviraj odmah</a>
+      <a href="cijenik.html" class="nav-link">Cjenik</a>
     </div>
+    <a href="booking.html" class="nav-cta">Rezerviraj odmah</a>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Otvori izbornik">
       <svg id="hamburger-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <line x1="4" y1="10" x2="28" y2="10"/>
@@ -1628,11 +1657,12 @@
   <a href="#tim" class="nav-link">Tim</a>
   <a href="#recenzije" class="nav-link">Recenzije</a>
   <a href="#lokacija" class="nav-link">Lokacija</a>
+  <a href="cijenik.html" class="nav-link">Cjenik</a>
   <a href="#lokacija" class="nav-cta">Rezerviraj odmah</a>
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
   <!-- Desktop landscape video (hidden on mobile) -->
   <video class="hero-video hero-video--desktop" autoplay loop muted playsinline>
     <source src="Take_the_existing_animation_an_Kling_30__64232.mp4" type="video/mp4">
@@ -1645,9 +1675,9 @@
   <div class="hero-inner">
     <div class="hero-content">
       <span class="eyebrow">Frizerski salon</span>
-      <h1 class="hero-title">Kika</h1>
+      <h1 class="hero-title">Style &amp; Smile</h1>
       <p class="hero-body">
-        Od klasičnih šišanja do najnovijih trendova — Frizerski salon Kika pruža besprijekornu njegu za vašu kosu.
+        Od klasičnih šišanja do najnovijih trendova — Style &amp; Smile pruža besprijekornu njegu za vašu kosu.
       </p>
       <a href="booking.html" class="cta-btn">Rezerviraj odmah</a>
     </div>
@@ -1665,7 +1695,7 @@
       <span class="label">Priča</span>
       <h2>Da skratimo priču...</h2>
       <p>
-        Kreativnost i preciznost temelj su svega što radimo. Frizerski salon Kika nastao je iz želje da stvorimo destinaciju gdje svaki detalj ima važnost, a svaki klijent odlazi s frizurom koja nadilazi očekivanja.
+        Kreativnost i preciznost temelj su svega što radimo. Style &amp; Smile nastao je iz želje da stvorimo destinaciju gdje svaki detalj ima važnost, a svaki klijent odlazi s frizurom koja nadilazi očekivanja.
       </p>
       <p>
         Za nas, kosa je platno, a svaka posjeta salonu prilika za stvaranje nečeg unikatnog. Vaše povjerenje naša je najveća motivacija da svakim danom budemo još bolji.
@@ -1686,7 +1716,7 @@
   <div class="services-header">
     <span class="label">Usluge</span>
     <h2>Vaša kosa u najboljim rukama</h2>
-    <p>Svaka usluga u salonu Kika rezultat je vrhunske tehnike i potpune posvećenosti detaljima. Koristimo isključivo premium proizvode kako bismo osigurali zdravlje i sjaj vaše kose.</p>
+    <p>Svaka usluga u Style &amp; Smile rezultat je vrhunske tehnike i potpune posvećenosti detaljima. Koristimo isključivo premium proizvode kako bismo osigurali zdravlje i sjaj vaše kose.</p>
   </div>
 
   <div class="services-grid">
@@ -1694,8 +1724,8 @@
     <div class="service-slide">
       <a href="booking.html">
         <div class="service-card-img-wrap">
-          <img class="service-card-img"
-               src="Mid-Fade-Haircut_600x600.webp"
+          <img class="service-card-img haircut-img"
+               src="Gemini_Generated_Image_1nc8fx1nc8fx1nc8.png"
                alt="Klasično i moderno šišanje"
                loading="lazy">
         </div>
@@ -1714,11 +1744,11 @@
     <div class="service-slide">
       <a href="booking.html">
         <div class="service-card-img-wrap">
-          <img class="service-card-img beard-img" src="brada.jpg" alt="Uređivanje i oblikovanje brade" loading="lazy">
+          <img class="service-card-img beard-img" src="brada.jpg" alt="Uređivanje i oblikovanje brade i brkova" loading="lazy">
         </div>
         <div class="service-card-text-body">
-          <div class="service-card-title">Uređivanje brade</div>
-          <p class="service-card-desc">Oblikovanje i uređivanje brade koje naglašava Vaše crte lica</p>
+          <div class="service-card-title">Brada i brkovi</div>
+          <p class="service-card-desc">Precizno oblikovanje brade i brkova koje savršeno naglašava Vaše crte lica</p>
           <div class="service-card-link">
             Zakaži termin
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -1731,28 +1761,11 @@
     <div class="service-slide">
       <a href="booking.html">
         <div class="service-card-img-wrap">
-          <img class="service-card-img kombo-img" src="Gemini_Generated_Image_lo3xsrlo3xsrlo3x.png" alt="Šišanje i brada kombo tretman" loading="lazy">
+          <img class="service-card-img" src="Gemini_Generated_Image_vdp9pvdp9pvdp9pv.png" alt="Head spa tretman" loading="lazy">
         </div>
         <div class="service-card-text-body">
-          <div class="service-card-title">Šišanje i brada</div>
-          <p class="service-card-desc">Kompletni tretman — Šišanje i uređivanje brade u jednoj sesiji</p>
-          <div class="service-card-link">
-            Zakaži termin
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </div>
-        </div>
-        <div class="service-glow-inner"></div>
-      </a>
-    </div>
-
-    <div class="service-slide">
-      <a href="booking.html">
-        <div class="service-card-img-wrap">
-          <img class="service-card-img" src="https://placehold.co/420x460/141414/c9a96e?text=Brijanje" alt="Brijanje vrućim ručnikom" loading="lazy">
-        </div>
-        <div class="service-card-text-body">
-          <div class="service-card-title">Brijanje vrućim ručnikom</div>
-          <p class="service-card-desc">Klasično brijanje ravnom britvom uz topli ručnik — pravo iskustvo za modernog muškarca.</p>
+          <div class="service-card-title">Head spa</div>
+          <p class="service-card-desc">Opuštajući i osvježavajući tretmani za njegu i zdravlje Vašeg vlasišta</p>
           <div class="service-card-link">
             Zakaži termin
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
