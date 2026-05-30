@@ -46,3 +46,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* ─── ACCESSIBILITY: FOCUS VISIBLE ─── */
+/* Remove focus ring for mouse/touch; keep it for keyboard navigation only */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #c9a96e;
+  outline-offset: 4px;
+  border-radius: 3px;
+  box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.22);
+}
+
+/* Circular focus ring for logo */
+.nav-logo:focus-visible {
+  outline: 2px solid #c9a96e;
+  outline-offset: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.22);
+}
+
+/* On light cream backgrounds — story section uses dark green ring */
+.story *:focus-visible {
+  outline-color: #3d5040;
+  box-shadow: 0 0 0 4px rgba(61, 80, 64, 0.22);
+}

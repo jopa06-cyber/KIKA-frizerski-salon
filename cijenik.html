@@ -343,6 +343,9 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     .price-item {
@@ -488,10 +491,10 @@
 <body>
 
 <!-- NAVIGACIJA -->
-<nav id="main-nav">
+<nav id="main-nav" aria-label="Glavna navigacija">
   <div class="nav-bar">
-    <a href="index.html" class="nav-logo">
-      <img src="Gemini_Generated_Image_wj0z25wj0z25wj0z-removebg-preview.png" alt="Kika" width="36" height="36">
+    <a href="index.html" class="nav-logo" aria-label="Povratak na naslovnicu">
+      <img src="Gemini_Generated_Image_wj0z25wj0z25wj0z-removebg-preview.png" alt="" width="36" height="36" aria-hidden="true">
     </a>
     <div class="nav-links-desktop">
       <a href="index.html#prica" class="nav-link">Priča</a>
@@ -499,11 +502,11 @@
       <a href="index.html#tim" class="nav-link">Tim</a>
       <a href="index.html#recenzije" class="nav-link">Recenzije</a>
       <a href="index.html#lokacija" class="nav-link">Lokacija</a>
-      <a href="cijenik.html" class="nav-link nav-link--active">Cjenik</a>
+      <a href="cijenik.html" class="nav-link nav-link--active" aria-current="page">Cjenik</a>
     </div>
     <a href="booking.html" class="nav-cta">Rezerviraj odmah</a>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Otvori izbornik">
-      <svg id="hamburger-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Otvori izbornik" aria-expanded="false" aria-controls="nav-mobile">
+      <svg id="hamburger-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="4" y1="10" x2="28" y2="10"/>
         <line x1="4" y1="16" x2="28" y2="16"/>
         <line x1="4" y1="22" x2="28" y2="22"/>
@@ -513,7 +516,7 @@
 </nav>
 
 <!-- Mobile menu overlay -->
-<div class="nav-mobile" id="nav-mobile">
+<div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true" aria-label="Izbornik" aria-hidden="true">
   <a href="index.html#prica" class="nav-link">Priča</a>
   <a href="index.html#usluge" class="nav-link">Usluge</a>
   <a href="index.html#tim" class="nav-link">Tim</a>
@@ -539,61 +542,61 @@
       <span class="price-category-label">01</span>
     </div>
     <h2>Šišanje</h2>
-    <div class="price-list">
+    <div class="price-list" role="list">
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Muško šišanje i frizura</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">12,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Muško šišanje s mašinom (na istu duljinu)</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">11,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Muško šišanje sa škarama</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">14,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Pranje kose i frizura</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">8,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Šišanje i ispiranje kose</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">14,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Toniranje kose</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">14,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Obiteljski paket (3 člana)</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">30,00 €</div>
       </div>
 
@@ -606,45 +609,45 @@
       <span class="price-category-label">02</span>
     </div>
     <h2>Brada i brkovi</h2>
-    <div class="price-list">
+    <div class="price-list" role="list">
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Uređivanje brade — mašinica</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">12,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Uređivanje brade (sve na istu dužinu)</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">8,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Toniranje brade i brkova</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">14,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Brijanje brade — shaver</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">10,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Brijanje glave — shaver</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">10,00 €</div>
       </div>
 
@@ -657,29 +660,29 @@
       <span class="price-category-label">03</span>
     </div>
     <h2>Head Spa</h2>
-    <div class="price-list">
+    <div class="price-list" role="list">
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Head Spa Refresh (30 min)</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">40,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Head Spa Balance (45 min)</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">55,00 €</div>
       </div>
 
-      <div class="price-item">
+      <div class="price-item" role="listitem">
         <div class="price-item-info">
           <div class="price-item-name">Head Spa Kids (20 min)</div>
         </div>
-        <div class="price-item-dots"></div>
+        <div class="price-item-dots" aria-hidden="true"></div>
         <div class="price-item-price">30,00 €</div>
       </div>
 
@@ -724,12 +727,12 @@
 
       <div class="footer-center">
         <div class="footer-col-label">Navigacija</div>
-        <nav class="footer-nav">
+        <nav class="footer-nav" aria-label="Navigacija na stranici">
           <a href="index.html#prica">Priča</a>
           <a href="index.html#usluge">Usluge</a>
           <a href="index.html#tim">Tim</a>
           <a href="index.html#recenzije">Recenzije</a>
-          <a href="cijenik.html">Cjenik</a>
+          <a href="cijenik.html" aria-current="page">Cjenik</a>
         </nav>
       </div>
 
@@ -771,6 +774,8 @@
       mobileMenu.classList.toggle('open', menuOpen);
       document.body.style.overflow = menuOpen ? 'hidden' : '';
       document.getElementById('hamburger-icon').innerHTML = menuOpen ? CLOSE_SVG : HAMBURGER_SVG;
+      hamburger.setAttribute('aria-expanded', menuOpen ? 'true' : 'false');
+      mobileMenu.setAttribute('aria-hidden', menuOpen ? 'false' : 'true');
     });
 
     mobileLinks.forEach(function (link) {
@@ -779,6 +784,8 @@
         mobileMenu.classList.remove('open');
         document.body.style.overflow = '';
         document.getElementById('hamburger-icon').innerHTML = HAMBURGER_SVG;
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
       });
     });
   })();

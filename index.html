@@ -437,7 +437,7 @@
     }
 
     .story-text .label {
-      color: var(--green);
+      color: #3d5040; /* #3d5040 on cream #f4e4de = 7.0:1 contrast — was var(--green) = 3.26:1 */
       margin-bottom: 0; /* spacing handled by space-between */
     }
 
@@ -1438,7 +1438,7 @@
       font-weight: 600;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: #484440;
+      color: #9a9490; /* was #484440 = 2.02:1; now 6.5:1 on #0d0d0d */
       margin-bottom: 14px;
     }
 
@@ -1538,7 +1538,7 @@
     .footer-copy {
       font-family: 'Montserrat', sans-serif;
       font-size: 10px;
-      color: #444;
+      color: #847e78; /* was #444 = 2.0:1; now 4.85:1 on #0d0d0d */
       letter-spacing: 0.14em;
       font-style: italic;
     }
@@ -1626,10 +1626,10 @@
 <body>
 
 <!-- NAVIGACIJA -->
-<nav id="main-nav">
+<nav id="main-nav" aria-label="Glavna navigacija">
   <div class="nav-bar">
-    <a href="#hero" class="nav-logo">
-      <img src="Gemini_Generated_Image_wj0z25wj0z25wj0z-removebg-preview.png" alt="Kika" width="36" height="36">
+    <a href="#hero" class="nav-logo" aria-label="Povratak na vrh stranice">
+      <img src="Gemini_Generated_Image_wj0z25wj0z25wj0z-removebg-preview.png" alt="" width="36" height="36" aria-hidden="true">
     </a>
     <div class="nav-links-desktop">
       <a href="#prica" class="nav-link">Priča</a>
@@ -1640,8 +1640,8 @@
       <a href="cijenik.html" class="nav-link">Cjenik</a>
     </div>
     <a href="booking.html" class="nav-cta">Rezerviraj odmah</a>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Otvori izbornik">
-      <svg id="hamburger-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Otvori izbornik" aria-expanded="false" aria-controls="nav-mobile">
+      <svg id="hamburger-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="4" y1="10" x2="28" y2="10"/>
         <line x1="4" y1="16" x2="28" y2="16"/>
         <line x1="4" y1="22" x2="28" y2="22"/>
@@ -1651,7 +1651,7 @@
 </nav>
 
 <!-- Mobile menu overlay -->
-<div class="nav-mobile" id="nav-mobile">
+<div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true" aria-label="Izbornik" aria-hidden="true">
   <a href="#prica" class="nav-link">Priča</a>
   <a href="#usluge" class="nav-link">Usluge</a>
   <a href="#tim" class="nav-link">Tim</a>
@@ -1661,14 +1661,16 @@
   <a href="#lokacija" class="nav-cta">Rezerviraj odmah</a>
 </div>
 
+<main id="main-content">
+
 <!-- HERO -->
 <section class="hero" id="hero">
   <!-- Desktop landscape video (hidden on mobile) -->
-  <video class="hero-video hero-video--desktop" autoplay loop muted playsinline>
+  <video class="hero-video hero-video--desktop" autoplay loop muted playsinline aria-hidden="true">
     <source src="Take_the_existing_animation_an_Kling_30__64232.mp4" type="video/mp4">
   </video>
   <!-- Mobile portrait 9:16 video (hidden on desktop) -->
-  <video class="hero-video hero-video--mobile" autoplay loop muted playsinline>
+  <video class="hero-video hero-video--mobile" autoplay loop muted playsinline aria-hidden="true">
     <source src="Duration_Format_5_seconds_seam_Kling_30__07413.mp4" type="video/mp4">
   </video>
 
@@ -1689,7 +1691,8 @@
   <div class="story-container">
     <div class="story-text">
       <img src="Gemini_Generated_Image_wj0z25wj0z25wj0z-removebg-preview.png"
-           alt="Kika Brijačnica logo"
+           alt=""
+           aria-hidden="true"
            loading="lazy"
            style="width:260px;height:260px;object-fit:contain;filter:invert(1);margin-bottom:0;display:block;image-rendering:auto;">
       <span class="label">Priča</span>
@@ -1722,7 +1725,7 @@
   <div class="services-grid">
 
     <div class="service-slide">
-      <a href="booking.html">
+      <a href="booking.html" aria-label="Zakaži termin za Šišanje">
         <div class="service-card-img-wrap">
           <img class="service-card-img haircut-img"
                src="Gemini_Generated_Image_1nc8fx1nc8fx1nc8.png"
@@ -1730,48 +1733,48 @@
                loading="lazy">
         </div>
         <div class="service-card-text-body">
-          <div class="service-card-title">Šišanje</div>
-          <p class="service-card-desc">Precizno šišanje prilagođeno Vašem obliku lica i željenom stilu</p>
-          <div class="service-card-link">
+          <div class="service-card-title" aria-hidden="true">Šišanje</div>
+          <p class="service-card-desc" aria-hidden="true">Precizno šišanje prilagođeno Vašem obliku lica i željenom stilu</p>
+          <div class="service-card-link" aria-hidden="true">
             Zakaži termin
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
-        <div class="service-glow-inner"></div>
+        <div class="service-glow-inner" aria-hidden="true"></div>
       </a>
     </div>
 
     <div class="service-slide">
-      <a href="booking.html">
+      <a href="booking.html" aria-label="Zakaži termin za Bradu i brkove">
         <div class="service-card-img-wrap">
           <img class="service-card-img beard-img" src="brada.jpg" alt="Uređivanje i oblikovanje brade i brkova" loading="lazy">
         </div>
         <div class="service-card-text-body">
-          <div class="service-card-title">Brada i brkovi</div>
-          <p class="service-card-desc">Precizno oblikovanje brade i brkova koje savršeno naglašava Vaše crte lica</p>
-          <div class="service-card-link">
+          <div class="service-card-title" aria-hidden="true">Brada i brkovi</div>
+          <p class="service-card-desc" aria-hidden="true">Precizno oblikovanje brade i brkova koje savršeno naglašava Vaše crte lica</p>
+          <div class="service-card-link" aria-hidden="true">
             Zakaži termin
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
-        <div class="service-glow-inner"></div>
+        <div class="service-glow-inner" aria-hidden="true"></div>
       </a>
     </div>
 
     <div class="service-slide">
-      <a href="booking.html">
+      <a href="booking.html" aria-label="Zakaži termin za Head spa">
         <div class="service-card-img-wrap">
           <img class="service-card-img" src="Gemini_Generated_Image_vdp9pvdp9pvdp9pv.png" alt="Head spa tretman" loading="lazy">
         </div>
         <div class="service-card-text-body">
-          <div class="service-card-title">Head spa</div>
-          <p class="service-card-desc">Opuštajući i osvježavajući tretmani za njegu i zdravlje Vašeg vlasišta</p>
-          <div class="service-card-link">
+          <div class="service-card-title" aria-hidden="true">Head spa</div>
+          <p class="service-card-desc" aria-hidden="true">Opuštajući i osvježavajući tretmani za njegu i zdravlje Vašeg vlasišta</p>
+          <div class="service-card-link" aria-hidden="true">
             Zakaži termin
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </div>
         </div>
-        <div class="service-glow-inner"></div>
+        <div class="service-glow-inner" aria-hidden="true"></div>
       </a>
     </div>
 
@@ -1785,9 +1788,9 @@
 
       <!-- Lijeva strana: portret -->
       <div class="team-photo-side">
-        <div class="team-photo-glow"></div>
+        <div class="team-photo-glow" aria-hidden="true"></div>
         <div class="team-photo-frame">
-          <img src="https://placehold.co/480x640/141414/c9a96e" alt="Vlasnik & Master Brijač" loading="lazy">
+          <img src="https://placehold.co/480x640/141414/c9a96e" alt="Vlasnik i master brijač" loading="lazy">
         </div>
       </div>
 
@@ -1797,12 +1800,12 @@
         <h2>Majstor iza stolice</h2>
         <div class="team-barber-name">Kristina</div>
         <div class="team-barber-title">Vlasnik &amp; Stilist</div>
-        <div class="team-divider"></div>
+        <div class="team-divider" aria-hidden="true"></div>
         <p class="team-bio">
           Kroz godine rada, Kristina je izgradila prepoznatljiv stil temeljen na povjerenju i kvaliteti. Svaki posjet salonu vidi kao priliku za stvaranje nečeg unikatnog, osiguravajući da se svaki klijent osjeća opušteno, cijenjeno i, iznad svega, zadovoljno svojim novim izgledom.
         </p>
-        <a href="https://instagram.com/kikabrijacnica" target="_blank" rel="noopener" class="team-insta">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <a href="https://instagram.com/kikabrijacnica" target="_blank" rel="noopener" class="team-insta" aria-label="Pratite @kikabrijacnica na Instagramu (otvara novu karticu)">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
             <circle cx="12" cy="12" r="4"/>
             <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
@@ -1824,9 +1827,9 @@
   <div class="reviews-grid">
 
     <div class="review-card">
-      <div class="review-glow-inner"></div>
-      <div class="review-google-badge">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="review-glow-inner" aria-hidden="true"></div>
+      <div class="review-google-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84c-.87-2.6-3.3-4.53-6.16-4.53z" fill="#FBBC05"/>
@@ -1834,15 +1837,15 @@
         </svg>
         Recenzija
       </div>
-      <span class="review-stars">★★★★★</span>
+      <span class="review-stars" role="img" aria-label="5 od 5 zvjezdica">★★★★★</span>
       <p class="review-quote">"Jako ugodan prostor, vrhunska usluga i jako pristupačna i profesionalna vlasnica salona."</p>
       <div class="review-author">Ivana Krtalić</div>
     </div>
 
     <div class="review-card">
-      <div class="review-glow-inner"></div>
-      <div class="review-google-badge">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="review-glow-inner" aria-hidden="true"></div>
+      <div class="review-google-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84c-.87-2.6-3.3-4.53-6.16-4.53z" fill="#FBBC05"/>
@@ -1850,15 +1853,15 @@
         </svg>
         Recenzija
       </div>
-      <span class="review-stars">★★★★★</span>
+      <span class="review-stars" role="img" aria-label="5 od 5 zvjezdica">★★★★★</span>
       <p class="review-quote">"Najbolji frizerski salon u Zagrebu 🔝🔟"</p>
       <div class="review-author">Tomislav Car</div>
     </div>
 
     <div class="review-card">
-      <div class="review-glow-inner"></div>
-      <div class="review-google-badge">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="review-glow-inner" aria-hidden="true"></div>
+      <div class="review-google-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84c-.87-2.6-3.3-4.53-6.16-4.53z" fill="#FBBC05"/>
@@ -1866,7 +1869,7 @@
         </svg>
         Recenzija
       </div>
-      <span class="review-stars">★★★★★</span>
+      <span class="review-stars" role="img" aria-label="5 od 5 zvjezdica">★★★★★</span>
       <p class="review-quote">"Najbolja frizerka :) Točnost, čistoća, kvaliteta, profesionalnost, vrijednost — sve na najvišoj razini."</p>
       <div class="review-author">Filip Orešković</div>
     </div>
@@ -1918,6 +1921,8 @@
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
 
@@ -1952,7 +1957,7 @@
 
       <div class="footer-center">
         <div class="footer-col-label">Navigacija</div>
-        <nav class="footer-nav">
+        <nav class="footer-nav" aria-label="Navigacija na stranici">
           <a href="#prica">Priča</a>
           <a href="#usluge">Usluge</a>
           <a href="#tim">Tim</a>
@@ -1999,6 +2004,8 @@
       mobileMenu.classList.toggle('open', menuOpen);
       document.body.style.overflow = menuOpen ? 'hidden' : '';
       document.getElementById('hamburger-icon').innerHTML = menuOpen ? CLOSE_SVG : HAMBURGER_SVG;
+      hamburger.setAttribute('aria-expanded', menuOpen ? 'true' : 'false');
+      mobileMenu.setAttribute('aria-hidden', menuOpen ? 'false' : 'true');
     });
 
     mobileLinks.forEach(function (link) {
@@ -2007,6 +2014,8 @@
         mobileMenu.classList.remove('open');
         document.body.style.overflow = '';
         document.getElementById('hamburger-icon').innerHTML = HAMBURGER_SVG;
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
       });
     });
   })();
